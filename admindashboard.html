@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Admin Dashboard</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{
+background:linear-gradient(135deg,#08121f,#11253c);
+color:white;
+padding:20px;
+}
+.container{max-width:1400px;margin:auto}
+.hero{
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:30px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:30px;
+padding:40px;
+margin-bottom:25px;
+backdrop-filter:blur(20px);
+}
+.hero h1{font-size:3rem;margin-bottom:15px}
+.hero p{color:#c7d0db;line-height:1.7}
+.admin-icon{
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:170px;
+color:#4da3ff;
+}
+.btns{margin-top:25px;display:flex;gap:15px;flex-wrap:wrap}
+.btn{
+padding:14px 24px;
+border-radius:50px;
+text-decoration:none;
+font-weight:700;
+}
+.primary{background:#4da3ff;color:#08121f}
+.secondary{border:1px solid rgba(255,255,255,.1);color:white}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+margin-bottom:25px;
+}
+
+.card,.chart-box,.panel{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:25px;
+backdrop-filter:blur(15px);
+}
+
+.card{
+padding:25px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card i{
+font-size:30px;
+margin-bottom:15px;
+color:#4da3ff;
+}
+
+.card h2{
+font-size:2rem;
+}
+
+.card p{
+color:#b7c4d1;
+}
+
+.chart-box{
+padding:25px;
+margin-bottom:25px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.panel{
+padding:25px;
+}
+
+.panel h3{
+margin-bottom:15px;
+}
+
+.item{
+background:#162b45;
+padding:15px;
+border-radius:14px;
+margin-top:12px;
+}
+
+canvas{
+height:350px!important;
+}
+
+@media(max-width:900px){
+
+.hero{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.hero h1{
+font-size:2.2rem;
+}
+
+.admin-icon{
+font-size:100px;
+}
+
+.btns{
+justify-content:center;
+}
+
+.stats{
+grid-template-columns:repeat(2,1fr);
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:500px){
+
+.stats{
+grid-template-columns:1fr;
+}
+
+.hero{
+padding:25px;
+}
+
+.hero h1{
+font-size:1.8rem;
+}
+
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="hero">
+
+<div>
+
+<h1>Admin Dashboard ⚙️</h1>
+
+<p>
+Manage researchers, monitor platform activity,
+review studies, and track overall system performance.
+</p>
+
+<div class="btns">
+<a href="login.html" class="btn primary">Manage Users</a>
+<a href="login.html" class="btn secondary">Back Home</a>
+</div>
+
+</div>
+
+<div class="admin-icon">
+<i class="fa-solid fa-user-shield"></i>
+</div>
+
+</div>
+
+<div class="stats">
+
+<div class="card">
+<i class="fa-solid fa-users"></i>
+<h2>124</h2>
+<p>Total Researchers</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-flask"></i>
+<h2>86</h2>
+<p>Active Studies</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-file-circle-check"></i>
+<h2>52</h2>
+<p>Approved Reports</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-chart-pie"></i>
+<h2>98%</h2>
+<p>System Health</p>
+</div>
+
+</div>
+
+<div class="chart-box">
+
+<h2 style="margin-bottom:15px;">
+Platform Analytics
+</h2>
+
+<canvas id="adminChart"></canvas>
+
+</div>
+
+<div class="grid">
+
+<div class="panel">
+
+<h3>Recent Activities</h3>
+
+<div class="item">👤 New Researcher Registered</div>
+<div class="item">🧬 Study Approved</div>
+<div class="item">📄 Report Submitted</div>
+<div class="item">🔬 Research Updated</div>
+
+</div>
+
+<div class="panel">
+
+<h3>Admin Tasks</h3>
+
+<div class="item">✅ Review Pending Reports</div>
+<div class="item">👥 Manage User Accounts</div>
+<div class="item">📊 Generate Monthly Analytics</div>
+<div class="item">⚙️ Update System Settings</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+new Chart(
+document.getElementById('adminChart'),
+{
+type:'bar',
+data:{
+labels:['Jan','Feb','Mar','Apr','May','Jun'],
+datasets:[{
+label:'Research Submissions',
+data:[25,38,44,52,67,81],
+backgroundColor:'#4da3ff'
+}]
+},
+options:{
+responsive:true,
+maintainAspectRatio:false
+}
+}
+);
+
+</script>
+
+</body>
+</html>

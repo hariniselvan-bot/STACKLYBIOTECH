@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Auth Premium</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{
+min-height:100vh;display:flex;justify-content:center;align-items:center;
+background:linear-gradient(135deg,#031819,#0b2f30);
+padding:20px;overflow-x:hidden;
+}
+.card{
+width:100%;max-width:420px;background:rgba(255,255,255,.05);
+backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08);
+border-radius:28px;padding:28px;box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+.logo{text-align:center;margin-bottom:20px}
+.logo h1{color:#fff}
+.logo p{color:#b8d5d5;font-size:14px;margin-top:6px}
+.tabs{display:flex;background:#0a2425;border-radius:50px;padding:5px;margin:20px 0}
+.tabs button{flex:1;border:none;background:none;padding:12px;border-radius:50px;color:#b8d5d5;cursor:pointer}
+.tabs .active{background:#00ffd0;color:#031819;font-weight:700}
+.form{display:none}
+.form.active{display:block}
+input,select{
+width:100%;padding:14px;border:none;outline:none;margin-bottom:14px;
+border-radius:14px;background:#0a2425;color:white
+}
+.password-box{position:relative}
+.password-box input{padding-right:45px}
+.password-box i{
+position:absolute;right:15px;top:15px;color:#8fe9d8;cursor:pointer
+}
+.btn{
+width:100%;padding:14px;border:none;border-radius:50px;
+background:linear-gradient(90deg,#00866f,#00ffd0);
+color:white;font-weight:700;cursor:pointer
+}
+.home-btn{
+display:flex;justify-content:center;align-items:center;gap:10px;
+text-decoration:none;margin-top:12px;padding:14px;border-radius:14px;
+background:rgba(255,255,255,.05);color:#8fe9d8;border:1px solid rgba(255,255,255,.08)
+}
+.links{text-align:center;margin-top:10px}
+.links a{color:#8fe9d8;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="logo">
+<h1>Stackly</h1>
+<p>Biotech Research Platform</p>
+</div>
+
+<div class="tabs">
+<button class="active" id="loginTab">Login</button>
+<button id="signupTab">Sign Up</button>
+</div>
+
+<form id="loginForm" class="form active">
+<select id="loginRole" required>
+<option value="">Select Role</option>
+<option value="researcher">Researcher</option>
+<option value="admin">Admin</option>
+</select>
+
+<input type="email" placeholder="Email" required>
+
+<div class="password-box">
+<input type="password" id="loginPass" placeholder="Password" required>
+<i class="fa-solid fa-eye" onclick="togglePass('loginPass',this)"></i>
+</div>
+
+<button class="btn" type="submit">Login</button>
+
+<div class="links"><a href="#">Forgot Password?</a></div>
+<a href="home.html" class="home-btn"><i class="fa-solid fa-house"></i> Back To Home</a>
+</form>
+
+<form id="signupForm" class="form">
+<input type="text" placeholder="Full Name" required>
+<input type="email" placeholder="Email" required>
+<input type="tel" placeholder="Phone Number" required>
+
+<select required>
+<option>Select Role</option>
+<option>Researcher</option>
+<option>Admin</option>
+</select>
+
+<div class="password-box">
+<input type="password" id="signPass" placeholder="Password" required>
+<i class="fa-solid fa-eye" onclick="togglePass('signPass',this)"></i>
+</div>
+
+<div class="password-box">
+<input type="password" id="confirmPass" placeholder="Confirm Password" required>
+<i class="fa-solid fa-eye" onclick="togglePass('confirmPass',this)"></i>
+</div>
+
+<button class="btn">Create Account</button>
+</form>
+</div>
+
+<script>
+const loginTab=document.getElementById('loginTab');
+const signupTab=document.getElementById('signupTab');
+const loginForm=document.getElementById('loginForm');
+const signupForm=document.getElementById('signupForm');
+
+loginTab.onclick=()=>{
+loginTab.classList.add('active');
+signupTab.classList.remove('active');
+loginForm.classList.add('active');
+signupForm.classList.remove('active');
+}
+
+signupTab.onclick=()=>{
+signupTab.classList.add('active');
+loginTab.classList.remove('active');
+signupForm.classList.add('active');
+loginForm.classList.remove('active');
+}
+
+function togglePass(id,icon){
+const input=document.getElementById(id);
+if(input.type==='password'){
+input.type='text';
+icon.classList.replace('fa-eye','fa-eye-slash');
+}else{
+input.type='password';
+icon.classList.replace('fa-eye-slash','fa-eye');
+}
+}
+
+document.getElementById('loginForm').addEventListener('submit',function(e){
+e.preventDefault();
+const role=document.getElementById('loginRole').value;
+if(role==='researcher') location.href='researcherdashboard.html';
+if(role==='admin') location.href='admindashboard.html';
+});
+</script>
+</body>
+</html>

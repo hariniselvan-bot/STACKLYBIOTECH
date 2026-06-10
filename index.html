@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Loading</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(
+135deg,
+#031819,
+#063233,
+#031819
+);
+position:relative;
+}
+
+/* Background Glow */
+
+body::before{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+background:#00ffd0;
+border-radius:50%;
+filter:blur(220px);
+opacity:.15;
+animation:pulse 4s infinite;
+}
+
+@keyframes pulse{
+0%,100%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.2);
+}
+}
+
+/* Floating Particles */
+
+.particle{
+position:absolute;
+background:#00ffd0;
+border-radius:50%;
+opacity:.4;
+animation:float 8s linear infinite;
+}
+
+.particle:nth-child(1){
+width:8px;
+height:8px;
+left:10%;
+animation-delay:0s;
+}
+
+.particle:nth-child(2){
+width:12px;
+height:12px;
+left:25%;
+animation-delay:2s;
+}
+
+.particle:nth-child(3){
+width:6px;
+height:6px;
+left:50%;
+animation-delay:4s;
+}
+
+.particle:nth-child(4){
+width:10px;
+height:10px;
+left:75%;
+animation-delay:1s;
+}
+
+.particle:nth-child(5){
+width:7px;
+height:7px;
+left:90%;
+animation-delay:3s;
+}
+
+@keyframes float{
+
+0%{
+bottom:-20px;
+transform:translateY(0);
+}
+
+100%{
+bottom:110%;
+transform:translateY(-100vh);
+}
+
+}
+
+/* Center Box */
+
+.loader-container{
+text-align:center;
+z-index:2;
+width:90%;
+max-width:450px;
+}
+
+/* DNA Animation */
+
+.dna-wrapper{
+position:relative;
+width:180px;
+height:180px;
+margin:auto;
+margin-bottom:25px;
+}
+
+.ring{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+border:2px solid rgba(0,255,208,.2);
+border-radius:50%;
+}
+
+.ring1{
+width:180px;
+height:180px;
+animation:rotate 10s linear infinite;
+}
+
+.ring2{
+width:140px;
+height:140px;
+animation:rotateReverse 8s linear infinite;
+}
+
+.ring3{
+width:100px;
+height:100px;
+animation:rotate 6s linear infinite;
+}
+
+.dna{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:70px;
+color:#00ffd0;
+animation:spin 5s linear infinite;
+}
+
+@keyframes rotate{
+from{
+transform:translate(-50%,-50%) rotate(0deg);
+}
+to{
+transform:translate(-50%,-50%) rotate(360deg);
+}
+}
+
+@keyframes rotateReverse{
+from{
+transform:translate(-50%,-50%) rotate(360deg);
+}
+to{
+transform:translate(-50%,-50%) rotate(0deg);
+}
+}
+
+@keyframes spin{
+from{
+transform:translate(-50%,-50%) rotate(0deg);
+}
+to{
+transform:translate(-50%,-50%) rotate(360deg);
+}
+}
+
+/* Logo */
+
+.logo{
+font-size:3rem;
+font-weight:800;
+color:white;
+letter-spacing:2px;
+margin-bottom:10px;
+}
+
+.tagline{
+color:#9bd6d0;
+margin-bottom:30px;
+font-size:15px;
+}
+
+/* Progress */
+
+.progress{
+width:100%;
+height:14px;
+background:rgba(255,255,255,.08);
+border-radius:50px;
+overflow:hidden;
+margin-bottom:15px;
+}
+
+.progress-bar{
+width:0%;
+height:100%;
+background:linear-gradient(
+90deg,
+#00866f,
+#00ffd0
+);
+border-radius:50px;
+box-shadow:0 0 20px #00ffd0;
+transition:.2s;
+}
+
+.percent{
+font-size:28px;
+font-weight:700;
+color:#00ffd0;
+margin-bottom:10px;
+}
+
+.loading-text{
+color:#cde7e3;
+font-size:14px;
+letter-spacing:1px;
+animation:blink 1.5s infinite;
+}
+
+@keyframes blink{
+50%{
+opacity:.5;
+}
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+.logo{
+font-size:2.2rem;
+}
+
+.dna-wrapper{
+width:140px;
+height:140px;
+}
+
+.ring1{
+width:140px;
+height:140px;
+}
+
+.ring2{
+width:110px;
+height:110px;
+}
+
+.ring3{
+width:80px;
+height:80px;
+}
+
+.dna{
+font-size:55px;
+}
+
+.percent{
+font-size:24px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+
+<div class="loader-container">
+
+<div class="dna-wrapper">
+
+<div class="ring ring1"></div>
+<div class="ring ring2"></div>
+<div class="ring ring3"></div>
+
+<div class="dna">
+<i class="fa-solid fa-dna"></i>
+</div>
+
+</div>
+
+<div class="logo">
+STACKLY
+</div>
+
+<div class="tagline">
+Advanced Research Platform
+</div>
+
+<div class="progress">
+
+<div class="progress-bar" id="bar"></div>
+
+</div>
+
+<div class="percent" id="percent">
+0%
+</div>
+
+<div class="loading-text">
+Loading Research Data...
+</div>
+
+</div>
+
+<script>
+
+let progress = 0;
+
+const percent =
+document.getElementById("percent");
+
+const bar =
+document.getElementById("bar");
+
+const interval =
+setInterval(() => {
+
+progress++;
+
+percent.innerText =
+progress + "%";
+
+bar.style.width =
+progress + "%";
+
+if(progress >= 100){
+
+clearInterval(interval);
+
+document.body.style.transition =
+"opacity .8s";
+
+setTimeout(() => {
+
+document.body.style.opacity = "0";
+
+},300);
+
+setTimeout(() => {
+
+window.location.href =
+"home.html";
+
+},1200);
+
+}
+
+},25);
+
+</script>
+
+</body>
+</html>

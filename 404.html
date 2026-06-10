@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+<title>404 - Page Not Found</title>
+ 
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+ 
+<style>
+ 
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+ 
+body{
+background:#050505;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+position:relative;
+}
+ 
+/* GLOW EFFECTS */
+ 
+.glow{
+position:absolute;
+border-radius:50%;
+filter:blur(180px);
+animation:pulse 8s infinite;
+}
+ 
+.glow1{
+width:500px;
+height:500px;
+background:#084c65;
+top:-200px;
+right:-150px;
+opacity:.15;
+}
+ 
+.glow2{
+width:400px;
+height:400px;
+background:#084c65;
+bottom:-150px;
+left:-150px;
+opacity:.12;
+}
+ 
+/* FLOATING DOTS */
+ 
+.dot{
+position:absolute;
+width:8px;
+height:8px;
+background:#084c65;
+border-radius:50%;
+animation:float 10s linear infinite;
+}
+ 
+.dot:nth-child(1){
+left:10%;
+animation-delay:0s;
+}
+ 
+.dot:nth-child(2){
+left:25%;
+animation-delay:2s;
+}
+ 
+.dot:nth-child(3){
+left:45%;
+animation-delay:4s;
+}
+ 
+.dot:nth-child(4){
+left:65%;
+animation-delay:1s;
+}
+ 
+.dot:nth-child(5){
+left:85%;
+animation-delay:3s;
+}
+ 
+/* CONTAINER */
+ 
+.error-container{
+position:relative;
+z-index:10;
+text-align:center;
+padding:20px;
+max-width:900px;
+}
+ 
+/* LOGO */
+ 
+.logo img{
+height:70px;
+margin-bottom:20px;
+}
+ 
+/* ROCKET */
+ 
+.rocket{
+font-size:5rem;
+margin-bottom:20px;
+animation:rocket 4s ease-in-out infinite;
+}
+ 
+/* 404 */
+ 
+.error-code{
+font-size:11rem;
+font-weight:900;
+line-height:1;
+ 
+background:linear-gradient(
+45deg,
+#084c65,
+#ffffff,
+#084c65
+);
+ 
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+ 
+animation:glowText 3s infinite;
+}
+ 
+.error-title{
+font-size:3rem;
+color:#fff;
+margin-top:15px;
+}
+ 
+.error-desc{
+max-width:650px;
+margin:20px auto;
+color:#bdbdbd;
+line-height:1.8;
+}
+ 
+/* BUTTON */
+ 
+.back-btn{
+ 
+display:inline-flex;
+align-items:center;
+gap:12px;
+ 
+margin-top:25px;
+ 
+padding:18px 35px;
+ 
+background:#084c65;
+ 
+color:#fff;
+ 
+text-decoration:none;
+ 
+border-radius:60px;
+ 
+font-weight:600;
+ 
+transition:.4s;
+}
+ 
+.back-btn:hover{
+ 
+transform:translateY(-5px);
+ 
+box-shadow:
+0 20px 40px rgba(3, 71, 111, 0.35);
+}
+ 
+/* ANIMATIONS */
+ 
+@keyframes pulse{
+ 
+0%,100%{
+transform:scale(1);
+}
+ 
+50%{
+transform:scale(1.2);
+}
+ 
+}
+ 
+@keyframes rocket{
+ 
+0%,100%{
+transform:translateY(0);
+}
+ 
+50%{
+transform:translateY(-25px);
+}
+ 
+}
+ 
+@keyframes glowText{
+ 
+0%,100%{
+filter:drop-shadow(
+0 0 15px rgba(3, 55, 90, 0.5));
+}
+ 
+50%{
+filter:drop-shadow(
+0 0 40px rgba(3, 55, 90, 0.5));
+}
+ 
+}
+ 
+@keyframes float{
+ 
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+ 
+20%{
+opacity:1;
+}
+ 
+100%{
+transform:translateY(-100px);
+opacity:0;
+}
+ 
+}
+ 
+/* MOBILE */
+ 
+@media(max-width:768px){
+ 
+.logo img{
+height:50px;
+}
+ 
+.rocket{
+font-size:3.5rem;
+}
+ 
+.error-code{
+font-size:6rem;
+}
+ 
+.error-title{
+font-size:1.8rem;
+}
+ 
+.error-desc{
+font-size:14px;
+}
+ 
+.back-btn{
+width:100%;
+justify-content:center;
+}
+ 
+}
+ 
+</style>
+</head>
+<body>
+ 
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+ 
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+<div class="dot"></div>
+ 
+<div class="error-container">
+ 
+<div class="logo">
+<img src="logo.webp" alt="Logo">
+</div>
+ 
+<div class="rocket">
+🚀
+</div>
+ 
+<h1 class="error-code">
+404
+</h1>
+ 
+<h2 class="error-title">
+Oops! Page Not Found
+</h2>
+ 
+<p class="error-desc">
+The page you are looking for may have been moved,
+deleted, or temporarily unavailable.
+</p>
+ 
+<a href="#"
+class="back-btn"
+onclick="goBack(event)">
+ 
+<i class="fa-solid fa-arrow-left"></i>
+ 
+Go Back
+ 
+</a>
+ 
+</div>
+ 
+<script>
+ 
+function goBack(e){
+ 
+e.preventDefault();
+ 
+window.history.back();
+ 
+}
+ 
+</script>
+ 
+</body>
+</html>

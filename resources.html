@@ -1,0 +1,2675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Header</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:200vh;
+    background:#00585a;
+}
+
+/* HEADER */
+
+.header{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:92%;
+    max-width:1400px;
+    height:90px;
+    padding:0 40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-radius:30px;
+
+    z-index:1000;
+
+    transition:.4s ease;
+}
+
+/* SCROLL EFFECT */
+
+.header.scrolled{
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(20px);
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+}
+
+.logo img{
+    height:50px;
+}
+
+.logo h2{
+    color:#fff;
+    font-size:28px;
+    font-weight:700;
+}
+
+/* NAVIGATION */
+
+.nav-menu{
+    display:flex;
+    gap:50px;
+}
+
+.nav-menu a{
+    text-decoration:none;
+    color:#cfcfcf;
+    font-size:15px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-menu a:hover{
+    color:#00ffff;
+}
+
+.nav-menu a.active{
+    color:#fff;
+    position:relative;
+}
+
+.nav-menu a.active::before{
+    content:'';
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#ff7a2f;
+    top:-12px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+/* CONTACT BUTTON */
+
+.contact-btn{
+    text-decoration:none;
+    color:#fff;
+
+    padding:18px 35px;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        135deg,
+        #00b7c7,
+        #00e5ff
+    );
+
+    font-weight:600;
+
+    transition:.4s;
+}
+
+.contact-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* HAMBURGER */
+
+.hamburger{
+    display:none;
+    flex-direction:column;
+    gap:6px;
+    cursor:pointer;
+}
+
+.hamburger span{
+    width:30px;
+    height:3px;
+    background:white;
+    border-radius:10px;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+    position:fixed;
+    top:120px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:92%;
+    background:#021719;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    max-height:0;
+
+    transition:.4s;
+
+    z-index:999;
+}
+
+.mobile-menu.active{
+    max-height:500px;
+}
+
+.mobile-menu a{
+    display:block;
+
+    padding:18px 25px;
+
+    text-decoration:none;
+
+    color:white;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+    .nav-menu,
+    .contact-btn{
+        display:none;
+    }
+
+    .hamburger{
+        display:flex;
+    }
+
+    .header{
+        padding:0 20px;
+    }
+
+}
+.logo img{
+    height:60px;
+
+    filter:
+    brightness(0)
+    saturate(100%)
+    invert(67%)
+    sepia(77%)
+    saturate(462%)
+    hue-rotate(115deg)
+    brightness(103%)
+    contrast(101%);
+}
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+
+    <div class="logo">
+        <!-- Replace with your logo -->
+        <h2><img src="logo.webp" alt="Stackly Logo"></h2>
+    </div>
+
+    <nav class="nav-menu">
+        <a href="home.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="resources.html" class="active">Resources</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+
+    <a href="login.html" class="contact-btn">
+        Login →
+    </a>
+
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="home.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="resources.html">Resources</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="login.html">Login</a>
+</div>
+
+<script>
+
+// HEADER BACKGROUND ON SCROLL
+
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 50){
+        header.classList.add("scrolled");
+    }else{
+        header.classList.remove("scrolled");
+    }
+
+});
+
+// MOBILE MENU
+
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+
+hamburger.addEventListener("click", () => {
+
+    mobileMenu.classList.toggle("active");
+
+});
+
+</script>
+
+<section class="product-page-hero">
+
+    <div class="product-hero-overlay"></div>
+
+    <div class="product-particles">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="product-hero-content">
+
+        <div class="product-badge">
+            Advanced Biotechnology Platform
+        </div>
+
+        <h1>
+            Resources
+        </h1>
+
+        <div class="product-breadcrumb">
+
+            <a href="index.html">Home</a>
+
+            <span>/</span>
+
+            <span class="active">
+                Resources
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<style>
+
+/* ==========================
+   PRODUCT HERO
+========================== */
+
+.product-page-hero{
+
+    position:relative;
+
+    height:45vh;
+
+    min-height:420px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    background:url("bg.webp") center center/cover no-repeat;
+}
+
+/* DARK OVERLAY */
+
+.product-hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.75)
+    );
+}
+
+/* BIOTECH GLOW */
+
+.product-page-hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:#00ffd0;
+
+    filter:blur(180px);
+
+    opacity:.08;
+
+    top:-200px;
+    right:-150px;
+}
+
+.product-page-hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    border-radius:50%;
+
+    background:#00ffd0;
+
+    filter:blur(160px);
+
+    opacity:.05;
+
+    bottom:-200px;
+    left:-100px;
+}
+
+/* CONTENT */
+
+.product-hero-content{
+
+    position:relative;
+
+    z-index:10;
+
+    max-width:900px;
+
+    width:100%;
+
+    padding-top:110px; /* Prevent header overlap */
+    padding-left:20px;
+    padding-right:20px;
+}
+
+/* BADGE */
+
+.product-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 24px;
+
+    border-radius:50px;
+
+    background:rgba(0,255,208,.08);
+
+    border:1px solid rgba(0,255,208,.2);
+
+    color:#c8ffe5;
+
+    font-size:14px;
+
+    margin-bottom:25px;
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+    animation:fadeUp .8s ease forwards;
+}
+
+.product-badge::before{
+
+    content:"";
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#00ffd0;
+}
+
+/* TITLE */
+
+.product-hero-content h1{
+
+    color:#fff;
+
+    font-size:5rem;
+
+    font-weight:800;
+
+    line-height:1;
+
+    margin-bottom:20px;
+
+    letter-spacing:-2px;
+
+    opacity:0;
+
+    transform:translateX(-250px);
+
+    animation:titleSlide 1.2s ease forwards;
+}
+
+/* BREADCRUMB */
+
+.product-breadcrumb{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:white;
+
+    font-size:1rem;
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+    animation:fadeUp 1s ease forwards;
+
+    animation-delay:.4s;
+}
+
+.product-breadcrumb a{
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.product-breadcrumb a:hover{
+
+    color:#00ffd0;
+}
+
+.product-breadcrumb .active{
+
+    color:#00ffd0;
+}
+
+/* PARTICLES */
+
+.product-particles span{
+
+    position:absolute;
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:#00ffd0;
+
+    opacity:.2;
+
+    box-shadow:0 0 15px #00ffd0;
+
+    animation:particleFloat 12s linear infinite;
+}
+
+.product-particles span:nth-child(1){
+    left:10%;
+    bottom:-20px;
+}
+
+.product-particles span:nth-child(2){
+    left:25%;
+    bottom:-50px;
+}
+
+.product-particles span:nth-child(3){
+    left:50%;
+    bottom:-30px;
+}
+
+.product-particles span:nth-child(4){
+    left:70%;
+    bottom:-60px;
+}
+
+.product-particles span:nth-child(5){
+    left:85%;
+    bottom:-40px;
+}
+
+.product-particles span:nth-child(6){
+    left:95%;
+    bottom:-20px;
+}
+
+/* ANIMATIONS */
+
+@keyframes titleSlide{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-250px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+    }
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+    }
+}
+
+@keyframes particleFloat{
+
+    from{
+
+        transform:translateY(0) scale(1);
+    }
+
+    to{
+
+        transform:translateY(-600px) scale(1.5);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .product-page-hero{
+
+        height:38vh;
+
+        min-height:320px;
+    }
+
+    .product-hero-content{
+
+        padding-top:90px;
+    }
+
+    .product-hero-content h1{
+
+        font-size:2.8rem;
+    }
+
+    .product-breadcrumb{
+
+        flex-wrap:wrap;
+
+        font-size:14px;
+    }
+
+    .product-badge{
+
+        font-size:12px;
+
+        padding:8px 18px;
+    }
+}
+
+</style>
+
+<script>
+
+const particles =
+document.querySelectorAll(".product-particles span");
+
+particles.forEach((particle,index)=>{
+
+    particle.style.animationDelay =
+    `${index * 1.5}s`;
+
+});
+
+</script>
+<section class="ticker-section">
+
+    <div class="ticker">
+
+        <div class="ticker-track">
+
+            <span>Biotech</span>
+            <span>✦</span>
+
+            <span>Environment</span>
+            <span>✦</span>
+
+            <span>Testing</span>
+            <span>✦</span>
+
+            <span>Research</span>
+            <span>✦</span>
+
+            <span>Diagnostics</span>
+            <span>✦</span>
+
+            <span>Innovation</span>
+            <span>✦</span>
+
+            <!-- Duplicate for seamless loop -->
+
+            <span>Biotech</span>
+            <span>✦</span>
+
+            <span>Environment</span>
+            <span>✦</span>
+
+            <span>Testing</span>
+            <span>✦</span>
+
+            <span>Research</span>
+            <span>✦</span>
+
+            <span>Diagnostics</span>
+            <span>✦</span>
+
+            <span>Innovation</span>
+            <span>✦</span>
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .ticker-section{
+    width:100%;
+    overflow:hidden;
+    background:#c8e8dc;
+    padding:25px 0;
+}
+
+.ticker{
+    width:100%;
+    overflow:hidden;
+}
+
+.ticker-track{
+
+    display:flex;
+    align-items:center;
+    gap:50px;
+
+    width:max-content;
+
+    animation:marquee 20s linear infinite;
+}
+
+.ticker-track span{
+
+    font-size:42px;
+    font-weight:700;
+    color:#15284b;
+
+    white-space:nowrap;
+}
+
+@keyframes marquee{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+
+}
+</style>
+<section class="core-values-bio">
+
+    <div class="core-values-container">
+
+        <!-- LEFT IMAGES -->
+
+        <div class="core-values-images reveal-fade">
+
+            <img src="bio.webp" class="main-lab-image">
+
+            <div class="experience-card">
+
+                <div class="exp-icon">🧪</div>
+
+                <h3>12+</h3>
+
+                <p>Years Of Experience</p>
+
+            </div>
+
+            <img src="bio5.webp" class="small-lab-image">
+
+        </div>
+
+        <!-- RIGHT CONTENT -->
+
+        <div class="core-values-content reveal-left">
+
+            <div class="core-tag">
+                <span></span>
+                Our Core Values
+            </div>
+
+            <h2>
+                Core values that shape
+                every experiment
+            </h2>
+
+            <div class="core-item">
+
+                <h3>✔ Scientific Integrity</h3>
+
+                <p>
+                    We adhere to the highest standards
+                    of honesty and transparency in every
+                    phase of our research.
+                </p>
+
+            </div>
+
+            <div class="core-divider"></div>
+
+            <div class="core-item">
+
+                <h3>✔ Innovation-First Mindset</h3>
+
+                <p>
+                    We constantly explore advanced
+                    technologies and scientific methods
+                    to achieve breakthrough discoveries.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .core-values-bio{
+
+    background:#031819;
+
+    padding:120px 7%;
+
+    overflow:hidden;
+}
+
+.core-values-container{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:80px;
+
+    align-items:center;
+}
+
+/* LEFT */
+
+.core-values-images{
+
+    position:relative;
+}
+
+.main-lab-image{
+
+    width:100%;
+
+    border-radius:30px;
+
+    display:block;
+
+    object-fit:cover;
+}
+
+.small-lab-image{
+
+    position:absolute;
+
+    bottom:-40px;
+
+    right:-40px;
+
+    width:60%;
+
+    border-radius:25px;
+
+    border:8px solid #031819;
+}
+
+.experience-card{
+
+    position:absolute;
+
+    bottom:-20px;
+
+    left:-20px;
+
+    background:#0b2a2b;
+
+    width:220px;
+
+    border-radius:25px;
+
+    padding:30px;
+
+    border:1px solid rgba(0,255,208,.15);
+
+    box-shadow:
+    0 0 30px rgba(0,255,208,.08);
+}
+
+.exp-icon{
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#00ffd0;
+
+    color:#031819;
+
+    font-size:28px;
+
+    margin-bottom:20px;
+}
+
+.experience-card h3{
+
+    color:white;
+
+    font-size:3rem;
+}
+
+.experience-card p{
+
+    color:#c7d6d6;
+}
+
+/* RIGHT */
+
+.core-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    border-radius:50px;
+
+    background:rgba(0,255,208,.08);
+
+    border:1px solid rgba(0,255,208,.15);
+
+    color:#c8ffe5;
+
+    margin-bottom:25px;
+}
+
+.core-tag span{
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#00ffd0;
+}
+
+.core-values-content h2{
+
+    color:white;
+
+    font-size:4rem;
+
+    line-height:1.15;
+
+    margin-bottom:50px;
+}
+
+.core-item h3{
+
+    color:white;
+
+    font-size:2rem;
+
+    margin-bottom:15px;
+}
+
+.core-item p{
+
+    color:#b9d0d0;
+
+    line-height:1.9;
+
+    font-size:1.05rem;
+}
+
+.core-divider{
+
+    height:1px;
+
+    background:rgba(255,255,255,.08);
+
+    margin:40px 0;
+}
+
+/* ANIMATIONS */
+
+.reveal-fade{
+
+    opacity:0;
+
+    transform:scale(.9);
+
+    transition:1.2s ease;
+}
+
+.reveal-left{
+
+    opacity:0;
+
+    transform:translateX(-120px);
+
+    transition:1.2s ease;
+}
+
+.reveal-active{
+
+    opacity:1;
+
+    transform:none;
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+    .core-values-container{
+
+        grid-template-columns:1fr;
+
+        gap:100px;
+    }
+
+    .core-values-content h2{
+
+        font-size:2.7rem;
+    }
+
+    .small-lab-image{
+
+        width:70%;
+
+        right:0;
+    }
+
+    .experience-card{
+
+        width:180px;
+
+        padding:20px;
+    }
+
+    .experience-card h3{
+
+        font-size:2rem;
+    }
+}
+</style>
+<script>
+
+const observer =
+new IntersectionObserver((entries)=>{
+
+entries.forEach((entry)=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add(
+"reveal-active"
+);
+
+}
+
+});
+
+},{
+threshold:.2
+});
+
+document
+.querySelectorAll(
+'.reveal-fade, .reveal-left'
+)
+.forEach((el)=>{
+
+observer.observe(el);
+
+});
+
+</script>
+<section class="bio-team-section">
+
+    <div class="bio-team-header reveal-left">
+
+        <div class="bio-team-tag">
+            <span></span>
+            Our Team
+        </div>
+
+        <h2>
+            Collaboration at the core of
+            <span>innovation</span>
+        </h2>
+
+    </div>
+
+    <div class="bio-team-grid">
+
+        <div class="bio-team-card reveal-fade">
+            <img src="team1.webp" alt="">
+            <h3>Dr. James Carter</h3>
+            <p>Molecular Biologist</p>
+        </div>
+
+        <div class="bio-team-card reveal-fade">
+            <img src="team2.webp" alt="">
+            <h3>Dr. Olivia Hughes</h3>
+            <p>Research Chemist</p>
+        </div>
+
+        <div class="bio-team-card reveal-fade">
+            <img src="team3.webp" alt="">
+            <h3>Dr. Ethan Roberts</h3>
+            <p>Project Lead</p>
+        </div>
+
+        <div class="bio-team-card reveal-fade">
+            <img src="team4.webp" alt="">
+            <h3>Dr. Noah Clark</h3>
+            <p>Lab Manager</p>
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .bio-team-section{
+
+    background:#031819;
+
+    padding:120px 7%;
+
+    overflow:hidden;
+}
+
+.bio-team-header{
+
+    text-align:center;
+
+    margin-bottom:70px;
+}
+
+.bio-team-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    border-radius:50px;
+
+    background:rgba(0,255,208,.08);
+
+    border:1px solid rgba(0,255,208,.15);
+
+    color:#c8ffe5;
+
+    margin-bottom:25px;
+}
+
+.bio-team-tag span{
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#00ffd0;
+}
+
+.bio-team-header h2{
+
+    color:white;
+
+    font-size:4rem;
+
+    line-height:1.2;
+
+    max-width:850px;
+
+    margin:auto;
+}
+
+.bio-team-header h2 span{
+
+    color:#00ffd0;
+}
+
+/* GRID */
+
+.bio-team-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+}
+
+/* CARD */
+
+.bio-team-card{
+
+    text-align:center;
+}
+
+.bio-team-card img{
+
+    width:100%;
+
+    height:420px;
+
+    object-fit:cover;
+
+    border-radius:25px;
+
+    transition:.5s;
+}
+
+.bio-team-card:hover img{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+    0 0 35px rgba(0,255,208,.18);
+}
+
+.bio-team-card h3{
+
+    color:white;
+
+    margin-top:25px;
+
+    font-size:1.7rem;
+}
+
+.bio-team-card p{
+
+    color:#9ec8c8;
+
+    margin-top:10px;
+}
+
+/* ANIMATION */
+
+.reveal-left{
+
+    opacity:0;
+
+    transform:translateX(-120px);
+
+    transition:1.2s ease;
+}
+
+.reveal-fade{
+
+    opacity:0;
+
+    transform:translateY(80px);
+
+    transition:1s ease;
+}
+
+.reveal-active{
+
+    opacity:1;
+
+    transform:none;
+}
+
+/* STAGGER EFFECT */
+
+.bio-team-card:nth-child(1){
+    transition-delay:.1s;
+}
+
+.bio-team-card:nth-child(2){
+    transition-delay:.3s;
+}
+
+.bio-team-card:nth-child(3){
+    transition-delay:.5s;
+}
+
+.bio-team-card:nth-child(4){
+    transition-delay:.7s;
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+    .bio-team-grid{
+
+        grid-template-columns:1fr 1fr;
+    }
+
+    .bio-team-header h2{
+
+        font-size:2.8rem;
+    }
+
+    .bio-team-card img{
+
+        height:300px;
+    }
+}
+
+@media(max-width:600px){
+
+    .bio-team-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .bio-team-header h2{
+
+        font-size:2.2rem;
+    }
+}
+</style>
+<script>
+
+const teamObserver =
+new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add(
+"reveal-active"
+);
+
+}
+
+});
+
+},{
+threshold:.2
+});
+
+document
+.querySelectorAll(
+".reveal-left,.reveal-fade"
+)
+.forEach(el=>{
+
+teamObserver.observe(el);
+
+});
+
+</script>
+
+
+<section class="ticker-section">
+
+    <div class="ticker">
+
+        <div class="ticker-track">
+
+            <span>Biotech</span>
+            <span>✦</span>
+
+            <span>Environment</span>
+            <span>✦</span>
+
+            <span>Testing</span>
+            <span>✦</span>
+
+            <span>Research</span>
+            <span>✦</span>
+
+            <span>Diagnostics</span>
+            <span>✦</span>
+
+            <span>Innovation</span>
+            <span>✦</span>
+
+            <!-- Duplicate for seamless loop -->
+
+            <span>Biotech</span>
+            <span>✦</span>
+
+            <span>Environment</span>
+            <span>✦</span>
+
+            <span>Testing</span>
+            <span>✦</span>
+
+            <span>Research</span>
+            <span>✦</span>
+
+            <span>Diagnostics</span>
+            <span>✦</span>
+
+            <span>Innovation</span>
+            <span>✦</span>
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .ticker-section{
+    width:100%;
+    overflow:hidden;
+    background:#c8e8dc;
+    padding:25px 0;
+}
+
+.ticker{
+    width:100%;
+    overflow:hidden;
+}
+
+.ticker-track{
+
+    display:flex;
+    align-items:center;
+    gap:50px;
+
+    width:max-content;
+
+    animation:marquee 20s linear infinite;
+}
+
+.ticker-track span{
+
+    font-size:42px;
+    font-weight:700;
+    color:#15284b;
+
+    white-space:nowrap;
+}
+
+@keyframes marquee{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+
+}
+</style>
+
+<section class="biofaq-section">
+
+    <!-- SVG BACKGROUND -->
+
+    <div class="biofaq-svg-bg">
+
+        <svg class="biofaq-dna-svg" viewBox="0 0 500 200">
+
+            <path d="M0 100 C100 0 200 200 300 100 S500 0 500 100"
+                fill="none"
+                stroke="#00ffd0"
+                stroke-width="4"/>
+
+            <path d="M0 120 C100 220 200 20 300 120 S500 220 500 120"
+                fill="none"
+                stroke="#00ffd0"
+                stroke-width="4"/>
+
+        </svg>
+
+    </div>
+
+    <div class="biofaq-container">
+
+        <!-- LEFT -->
+
+        <div class="biofaq-left">
+
+            <div class="biofaq-tag">
+                <span></span>
+                Frequently Asked Questions
+            </div>
+
+            <h2 class="biofaq-title">
+                Browse our most
+                asked questions
+            </h2>
+
+            <p class="biofaq-desc">
+                We've compiled answers to the most common
+                questions about our laboratory services,
+                research process and scientific capabilities.
+            </p>
+
+            <a href="contact.html" class="biofaq-btn">
+                View All FAQs ↗
+            </a>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="biofaq-box">
+
+            <div class="biofaq-item">
+
+                <div class="biofaq-question">
+
+                    What types of research services do you offer?
+
+                    <span>+</span>
+
+                </div>
+
+                <div class="biofaq-answer">
+
+                    We provide biotechnology, environmental
+                    science, genomic analysis and laboratory
+                    testing services.
+
+                </div>
+
+            </div>
+
+            <div class="biofaq-item">
+
+                <div class="biofaq-question">
+
+                    Can I request a custom research project?
+
+                    <span>+</span>
+
+                </div>
+
+                <div class="biofaq-answer">
+
+                    Yes, we create customized scientific
+                    research solutions tailored to your needs.
+
+                </div>
+
+            </div>
+
+            <div class="biofaq-item">
+
+                <div class="biofaq-question">
+
+                    How long does a typical project take?
+
+                    <span>+</span>
+
+                </div>
+
+                <div class="biofaq-answer">
+
+                    Timelines vary depending on project
+                    complexity and laboratory requirements.
+
+                </div>
+
+            </div>
+
+            <div class="biofaq-item">
+
+                <div class="biofaq-question">
+
+                    Are your labs certified?
+
+                    <span>+</span>
+
+                </div>
+
+                <div class="biofaq-answer">
+
+                    Yes, our laboratories follow industry
+                    standards and quality assurance protocols.
+
+                </div>
+
+            </div>
+
+            <div class="biofaq-item">
+
+                <div class="biofaq-question">
+
+                    How do I submit a sample?
+
+                    <span>+</span>
+
+                </div>
+
+                <div class="biofaq-answer">
+
+                    Contact our team and we will guide you
+                    through the submission process.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .biofaq-section{
+
+    background:#031819;
+
+    padding:120px 7%;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.biofaq-container{
+
+    display:grid;
+
+    grid-template-columns:1fr 1.3fr;
+
+    gap:80px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+/* SVG */
+
+.biofaq-svg-bg{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+}
+
+.biofaq-dna-svg{
+
+    position:absolute;
+
+    right:-150px;
+
+    top:50%;
+
+    width:700px;
+
+    opacity:.08;
+
+    animation:biofaqFloat 8s ease-in-out infinite;
+}
+
+@keyframes biofaqFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-30px);
+    }
+}
+
+/* LEFT */
+
+.biofaq-tag,
+.biofaq-title,
+.biofaq-desc,
+.biofaq-btn{
+
+    opacity:0;
+
+    transform:translateX(-100px);
+
+    transition:1s ease;
+}
+
+.biofaq-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(0,255,200,.15);
+
+    color:#d8fff6;
+}
+
+.biofaq-tag span{
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#00ffd0;
+}
+
+.biofaq-title{
+
+    color:white;
+
+    font-size:4.5rem;
+
+    line-height:1.05;
+
+    margin:30px 0;
+}
+
+.biofaq-desc{
+
+    color:#b9d0d0;
+
+    line-height:1.8;
+
+    font-size:1.1rem;
+}
+
+.biofaq-btn{
+
+    display:inline-block;
+
+    margin-top:40px;
+
+    padding:18px 35px;
+
+    background:#c8ffe5;
+
+    color:#031819;
+
+    text-decoration:none;
+
+    border-radius:15px;
+
+    font-weight:700;
+}
+
+/* RIGHT */
+
+.biofaq-box{
+
+    background:#103336;
+
+    border-radius:30px;
+
+    padding:40px;
+
+    opacity:0;
+
+    transform:translateX(100px);
+
+    transition:1.2s ease;
+}
+
+.biofaq-item{
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    padding:25px 0;
+
+    cursor:pointer;
+}
+
+.biofaq-question{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    color:white;
+
+    font-size:1.2rem;
+
+    font-weight:600;
+}
+
+.biofaq-answer{
+
+    max-height:0;
+
+    overflow:hidden;
+
+    color:#b9d0d0;
+
+    line-height:1.8;
+
+    transition:.5s ease;
+}
+
+.biofaq-item.active .biofaq-answer{
+
+    max-height:200px;
+
+    margin-top:15px;
+}
+
+/* SHOW */
+
+.biofaq-show-left{
+
+    opacity:1 !important;
+
+    transform:translateX(0) !important;
+}
+
+.biofaq-show-right{
+
+    opacity:1 !important;
+
+    transform:translateX(0) !important;
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+    .biofaq-container{
+
+        grid-template-columns:1fr;
+    }
+
+    .biofaq-title{
+
+        font-size:3rem;
+    }
+}
+
+@media(max-width:768px){
+
+    .biofaq-title{
+
+        font-size:2.3rem;
+    }
+
+    .biofaq-box{
+
+        padding:25px;
+    }
+}
+</style>
+<script>
+    const biofaqSection =
+document.querySelector(".biofaq-section");
+
+const biofaqLeft = [
+
+document.querySelector(".biofaq-tag"),
+document.querySelector(".biofaq-title"),
+document.querySelector(".biofaq-desc"),
+document.querySelector(".biofaq-btn")
+
+];
+
+const biofaqBox =
+document.querySelector(".biofaq-box");
+
+const biofaqObserver =
+new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+biofaqLeft.forEach((el,index)=>{
+
+setTimeout(()=>{
+
+el.classList.add(
+"biofaq-show-left"
+);
+
+},index*200);
+
+});
+
+setTimeout(()=>{
+
+biofaqBox.classList.add(
+"biofaq-show-right"
+);
+
+},500);
+
+}
+
+});
+
+},{
+threshold:.3
+});
+
+biofaqObserver.observe(
+biofaqSection
+);
+
+/* Accordion */
+
+document
+.querySelectorAll(".biofaq-item")
+.forEach(item=>{
+
+item.addEventListener("click",()=>{
+
+item.classList.toggle("active");
+
+});
+
+});
+</script>
+<section class="bio-testimonial-section">
+
+    <div class="bio-testimonial-header reveal-left">
+
+        <div class="bio-testimonial-tag">
+            <span></span>
+            Our Testimonials
+        </div>
+
+        <h2>
+            Voices from
+            <span>our customers</span>
+        </h2>
+
+        <p>
+            Hear genuine insights from clients who rely on our
+            laboratory services for accurate testing, data-driven
+            solutions, and research support.
+        </p>
+
+    </div>
+
+    <div class="bio-testimonial-grid">
+
+        <!-- CARD 1 -->
+
+        <div class="bio-testimonial-card reveal-fade">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p class="review">
+                “The level of scientific support and data reporting
+                exceeded expectations. Their services helped validate
+                our product for regulatory approval.”
+            </p>
+
+            <div class="testimonial-divider"></div>
+
+            <div class="client">
+
+                <img src="user.webp">
+
+                <div>
+
+                    <h4>Eleanor Hayes</h4>
+
+                    <span>Research Scientist, Biotech</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 2 -->
+
+        <div class="bio-testimonial-card reveal-fade">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p class="review">
+                “The laboratory team's expertise and commitment
+                to quality ensured our research project stayed
+                on track from start to finish.”
+            </p>
+
+            <div class="testimonial-divider"></div>
+
+            <div class="client">
+
+                <img src="user2.webp">
+
+                <div>
+
+                    <h4>Daniel Brooks</h4>
+
+                    <span>Product Manager, Pharma</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 3 -->
+
+        <div class="bio-testimonial-card reveal-fade">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p class="review">
+                “Excellent analytical testing services and
+                exceptional communication throughout the
+                entire process.”
+            </p>
+
+            <div class="testimonial-divider"></div>
+
+            <div class="client">
+
+                <img src="user3.webp">
+
+                <div>
+
+                    <h4>Olivia Carter</h4>
+
+                    <span>R&D Lead, Chemical Industry</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .bio-testimonial-section{
+
+    background:#031819;
+
+    padding:120px 7%;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+/* Glow Background */
+
+.bio-testimonial-section::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    background:#00ffd0;
+
+    border-radius:50%;
+
+    filter:blur(250px);
+
+    opacity:.05;
+
+    top:-250px;
+    right:-250px;
+}
+
+/* HEADER */
+
+.bio-testimonial-header{
+
+    text-align:center;
+
+    max-width:850px;
+
+    margin:auto auto 70px;
+}
+
+.bio-testimonial-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    border-radius:50px;
+
+    background:rgba(0,255,208,.08);
+
+    border:1px solid rgba(0,255,208,.15);
+
+    color:#c8ffe5;
+
+    margin-bottom:25px;
+}
+
+.bio-testimonial-tag span{
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#00ffd0;
+}
+
+.bio-testimonial-header h2{
+
+    color:white;
+
+    font-size:4rem;
+
+    margin-bottom:20px;
+}
+
+.bio-testimonial-header h2 span{
+
+    color:#00ffd0;
+}
+
+.bio-testimonial-header p{
+
+    color:#9dc1c1;
+
+    line-height:1.8;
+}
+
+/* GRID */
+
+.bio-testimonial-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+}
+
+/* CARD */
+
+.bio-testimonial-card{
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:25px;
+
+    padding:40px;
+
+    backdrop-filter:blur(15px);
+
+    transition:.4s;
+}
+
+.bio-testimonial-card:hover{
+
+    transform:translateY(-12px);
+
+    border-color:#00ffd0;
+
+    box-shadow:
+    0 0 30px rgba(0,255,208,.15);
+}
+
+.stars{
+
+    color:#00ffd0;
+
+    font-size:22px;
+
+    margin-bottom:25px;
+}
+
+.review{
+
+    color:#c7d6d6;
+
+    line-height:2;
+
+    min-height:170px;
+}
+
+.testimonial-divider{
+
+    height:1px;
+
+    background:rgba(255,255,255,.08);
+
+    margin:25px 0;
+}
+
+.client{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+}
+
+.client img{
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+}
+
+.client h4{
+
+    color:white;
+
+    margin-bottom:5px;
+}
+
+.client span{
+
+    color:#9dc1c1;
+}
+
+/* ANIMATIONS */
+
+.reveal-left{
+
+    opacity:0;
+
+    transform:translateX(-120px);
+
+    transition:1.2s ease;
+}
+
+.reveal-fade{
+
+    opacity:0;
+
+    transform:translateY(80px);
+
+    transition:1s ease;
+}
+
+.reveal-active{
+
+    opacity:1;
+
+    transform:none;
+}
+
+/* STAGGER */
+
+.bio-testimonial-card:nth-child(1){
+
+    transition-delay:.1s;
+}
+
+.bio-testimonial-card:nth-child(2){
+
+    transition-delay:.4s;
+}
+
+.bio-testimonial-card:nth-child(3){
+
+    transition-delay:.7s;
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+    .bio-testimonial-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .bio-testimonial-header h2{
+
+        font-size:2.7rem;
+    }
+}
+</style>
+<script>
+
+const testimonialObserver =
+new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add(
+"reveal-active"
+);
+
+}
+
+});
+
+},{
+threshold:.2
+});
+
+document
+.querySelectorAll(
+".reveal-left,.reveal-fade"
+)
+.forEach(el=>{
+
+testimonialObserver.observe(el);
+
+});
+
+</script>
+
+<footer class="biotech-footer">
+
+    <div class="biotech-footer-glow"></div>
+
+    <div class="biotech-footer-container">
+
+        <!-- LEFT -->
+
+        <div class="biotech-footer-about">
+
+            <img src="logo.webp" alt="Logo" class="biotech-footer-logo">
+
+            <p>
+                Advancing scientific discovery through innovative
+                biotechnology, laboratory research, genomic analysis,
+                and data-driven solutions that create meaningful impact.
+            </p>
+
+            <div class="biotech-socials">
+
+                <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+
+                <a href="404.html"><i class="fab fa-instagram"></i></a>
+
+                <a href="404.html"><i class="fab fa-linkedin-in"></i></a>
+
+                <a href="404.html"><i class="fab fa-youtube"></i></a>
+
+            </div>
+
+        </div>
+
+        <!-- LINKS -->
+
+        <div class="biotech-footer-links">
+
+            <h3>Research Areas</h3>
+
+            <a href="404.html">Genomics</a>
+            <a href="404.html">Biomedical Science</a>
+            <a href="404.html">Environmental Studies</a>
+            <a href="404.html">Chemical Analysis</a>
+            <a href="404.html">Laboratory Testing</a>
+
+        </div>
+
+        <!-- SERVICES -->
+
+        <div class="biotech-footer-links">
+
+            <h3>Quick Links</h3>
+
+            <a href="contact.html">Home</a>
+            <a href="contact.html">About</a>
+            <a href="contact.html">Research</a>
+            <a href="contact.html">Case Studies</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <!-- CONTACT -->
+
+        <div class="biotech-footer-contact">
+
+            <h3>Contact Us</h3>
+
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                +91 89397 484533
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                info@biotechlab.com
+            </p>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Chennai, Tamil Nadu
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="biotech-footer-bottom">
+
+        <p>
+            © 2026 BioTech Research Laboratory.
+            All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+<style>
+    .biotech-footer{
+
+    position:relative;
+
+    background:#021213;
+
+    overflow:hidden;
+
+    border-top:1px solid rgba(0,255,208,.1);
+}
+
+.biotech-footer-glow{
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    background:#00ffd0;
+
+    filter:blur(250px);
+
+    opacity:.05;
+
+    top:-200px;
+    left:-200px;
+}
+
+.biotech-footer-container{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:100px 7% 70px;
+
+    display:grid;
+
+    grid-template-columns:
+    1.4fr 1fr 1fr 1fr;
+
+    gap:70px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.biotech-footer-logo{
+
+    width:220px;
+
+    margin-bottom:25px;
+}
+
+.biotech-footer-about p{
+
+    color:#a9c6c6;
+
+    line-height:2;
+
+    font-size:16px;
+
+    margin-bottom:30px;
+}
+
+.biotech-socials{
+
+    display:flex;
+
+    gap:15px;
+}
+
+.biotech-socials a{
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-decoration:none;
+
+    color:#c8ffe5;
+
+    background:rgba(255,255,255,.04);
+
+    transition:.4s;
+}
+
+.biotech-socials a:hover{
+
+    background:#00ffd0;
+
+    color:#031819;
+
+    transform:translateY(-5px);
+}
+
+.biotech-footer-links h3,
+.biotech-footer-contact h3{
+
+    color:white;
+
+    margin-bottom:30px;
+
+    font-size:24px;
+}
+
+.biotech-footer-links{
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.biotech-footer-links a{
+
+    color:#a9c6c6;
+
+    text-decoration:none;
+
+    margin-bottom:18px;
+
+    transition:.3s;
+}
+
+.biotech-footer-links a:hover{
+
+    color:#00ffd0;
+
+    padding-left:8px;
+}
+
+.biotech-footer-contact p{
+
+    color:#a9c6c6;
+
+    margin-bottom:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    line-height:1.8;
+}
+
+.biotech-footer-contact i{
+
+    color:#00ffd0;
+
+    font-size:18px;
+}
+
+.biotech-footer-bottom{
+
+    border-top:1px solid rgba(255,255,255,.05);
+
+    text-align:center;
+
+    padding:30px;
+}
+
+.biotech-footer-bottom p{
+
+    color:#89a5a5;
+}
+
+/* Responsive */
+
+@media(max-width:991px){
+
+    .biotech-footer-container{
+
+        grid-template-columns:1fr 1fr;
+
+        gap:50px;
+    }
+}
+
+@media(max-width:768px){
+
+    .biotech-footer-container{
+
+        grid-template-columns:1fr;
+    }
+
+    .biotech-footer-logo{
+
+        width:180px;
+    }
+}
+</style>

@@ -1,0 +1,4070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stackly Header</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:200vh;
+    background:#00585a;
+}
+
+/* HEADER */
+
+.header{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:92%;
+    max-width:1400px;
+    height:90px;
+    padding:0 40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-radius:30px;
+
+    z-index:1000;
+
+    transition:.4s ease;
+}
+
+/* SCROLL EFFECT */
+
+.header.scrolled{
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(20px);
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+}
+
+.logo img{
+    height:50px;
+}
+
+.logo h2{
+    color:#fff;
+    font-size:28px;
+    font-weight:700;
+}
+
+/* NAVIGATION */
+
+.nav-menu{
+    display:flex;
+    gap:50px;
+}
+
+.nav-menu a{
+    text-decoration:none;
+    color:#cfcfcf;
+    font-size:15px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-menu a:hover{
+    color:#00ffff;
+}
+
+.nav-menu a.active{
+    color:#fff;
+    position:relative;
+}
+
+.nav-menu a.active::before{
+    content:'';
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#ff7a2f;
+    top:-12px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+/* CONTACT BUTTON */
+
+.contact-btn{
+    text-decoration:none;
+    color:#fff;
+
+    padding:18px 35px;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        135deg,
+        #00b7c7,
+        #00e5ff
+    );
+
+    font-weight:600;
+
+    transition:.4s;
+}
+
+.contact-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* HAMBURGER */
+
+.hamburger{
+    display:none;
+    flex-direction:column;
+    gap:6px;
+    cursor:pointer;
+}
+
+.hamburger span{
+    width:30px;
+    height:3px;
+    background:white;
+    border-radius:10px;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+    position:fixed;
+    top:120px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:92%;
+    background:#021719;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    max-height:0;
+
+    transition:.4s;
+
+    z-index:999;
+}
+
+.mobile-menu.active{
+    max-height:500px;
+}
+
+.mobile-menu a{
+    display:block;
+
+    padding:18px 25px;
+
+    text-decoration:none;
+
+    color:white;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+    .nav-menu,
+    .contact-btn{
+        display:none;
+    }
+
+    .hamburger{
+        display:flex;
+    }
+
+    .header{
+        padding:0 20px;
+    }
+
+}
+.logo img{
+    height:60px;
+
+    filter:
+    brightness(0)
+    saturate(100%)
+    invert(67%)
+    sepia(77%)
+    saturate(462%)
+    hue-rotate(115deg)
+    brightness(103%)
+    contrast(101%);
+}
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+
+    <div class="logo">
+        <!-- Replace with your logo -->
+        <h2><img src="logo.webp" alt="Stackly Logo"></h2>
+    </div>
+
+    <nav class="nav-menu">
+        <a href="home.html" class="active">Home</a>
+        <a href="products.html">Products</a>
+        <a href="resources.html">Resources</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+
+    <a href="login.html" class="contact-btn">
+        Login →
+    </a>
+
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="home.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="resources.html">Resources</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="login.html">Login</a>
+</div>
+
+<script>
+
+// HEADER BACKGROUND ON SCROLL
+
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 50){
+        header.classList.add("scrolled");
+    }else{
+        header.classList.remove("scrolled");
+    }
+
+});
+
+// MOBILE MENU
+
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+
+hamburger.addEventListener("click", () => {
+
+    mobileMenu.classList.toggle("active");
+
+});
+
+</script>
+
+<section class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <span class="hero-tag">INTRODUCING</span>
+
+        <h1 class="hero-title">
+            Advancing <br>
+            Stackly  <br>
+            Safety
+        </h1>
+
+        <p class="hero-description">
+            Accelerating breakthroughs in biotechnology through
+            advanced CRISPR screening, genomic analysis, and
+            next-generation safety assessment solutions.
+        </p>
+
+        <a href="contact.html" class="hero-btn">
+            Explore Platform
+            <span>→</span>
+        </a>
+
+        <div class="scroll-down">
+            <span class="dot"></span>
+            SCROLL DOWN
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .hero{
+    min-height:100vh;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
+    padding:180px 8% 100px;
+
+    overflow:hidden;
+
+    /* ADD YOUR IMAGE HERE */
+    background:url("bg.webp");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+    90deg,
+    rgba(0,0,0,.88) 0%,
+    rgba(0,0,0,.65) 45%,
+    rgba(0,0,0,.25) 100%);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:650px;
+}
+
+.hero-tag{
+    color:#00d9d9;
+    letter-spacing:5px;
+    font-size:14px;
+    font-weight:600;
+
+    display:block;
+    margin-bottom:25px;
+
+    animation:slideRight .8s ease;
+}
+
+.hero-title{
+    color:white;
+
+    font-size:6rem;
+    line-height:.95;
+    font-weight:800;
+
+    margin-bottom:30px;
+
+    animation:slideRight 1s ease;
+}
+
+.hero-description{
+    color:#d0d0d0;
+
+    font-size:1.2rem;
+    line-height:1.9;
+
+    max-width:550px;
+
+    animation:slideRight 1.2s ease;
+}
+
+.hero-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+
+    margin-top:40px;
+
+    padding:18px 35px;
+
+    border:2px solid #00e5ff;
+
+    border-radius:60px;
+
+    color:#00e5ff;
+    text-decoration:none;
+
+    transition:.4s;
+
+    animation:slideRight 1.4s ease;
+}
+
+.hero-btn:hover{
+    background:#00e5ff;
+    color:#031718;
+}
+
+.scroll-down{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    margin-top:120px;
+
+    color:#ffffff;
+    letter-spacing:4px;
+
+    font-size:12px;
+
+    animation:slideRight 1.6s ease;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:#ff8a3d;
+
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes slideRight{
+
+    from{
+        opacity:0;
+        transform:translateX(-100px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.5);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+@media(max-width:991px){
+
+    .hero{
+        padding:140px 30px 80px;
+        text-align:center;
+        justify-content:center;
+    }
+
+    .hero-title{
+        font-size:4rem;
+    }
+
+    .scroll-down{
+        justify-content:center;
+        margin-top:60px;
+    }
+}
+
+@media(max-width:600px){
+
+    .hero-title{
+        font-size:3rem;
+    }
+
+    .hero-description{
+        font-size:1rem;
+    }
+
+    .hero-btn{
+        padding:15px 25px;
+    }
+}
+</style>
+
+<section class="ticker-section">
+
+    <div class="ticker">
+
+        <div class="ticker-track">
+
+            <span>Biotech</span>
+            <span>✦</span>
+
+            <span>Environment</span>
+            <span>✦</span>
+
+            <span>Testing</span>
+            <span>✦</span>
+
+            <span>Research</span>
+            <span>✦</span>
+
+            <span>Diagnostics</span>
+            <span>✦</span>
+
+            <span>Innovation</span>
+            <span>✦</span>
+
+            <!-- Duplicate for seamless loop -->
+
+            <span>Biotech</span>
+            <span>✦</span>
+
+            <span>Environment</span>
+            <span>✦</span>
+
+            <span>Testing</span>
+            <span>✦</span>
+
+            <span>Research</span>
+            <span>✦</span>
+
+            <span>Diagnostics</span>
+            <span>✦</span>
+
+            <span>Innovation</span>
+            <span>✦</span>
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .ticker-section{
+    width:100%;
+    overflow:hidden;
+    background:#c8e8dc;
+    padding:25px 0;
+}
+
+.ticker{
+    width:100%;
+    overflow:hidden;
+}
+
+.ticker-track{
+
+    display:flex;
+    align-items:center;
+    gap:50px;
+
+    width:max-content;
+
+    animation:marquee 20s linear infinite;
+}
+
+.ticker-track span{
+
+    font-size:42px;
+    font-weight:700;
+    color:#15284b;
+
+    white-space:nowrap;
+}
+
+@keyframes marquee{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+
+}
+</style>
+<section class="about-biotech">
+
+    <div class="about-left">
+
+        <div class="about-tag">
+            <span></span>
+            About Our Laboratory
+        </div>
+
+        <h2>
+            Pioneering scientific research to transform
+            <span>knowledge</span>
+            into real-world solutions
+        </h2>
+
+        <div class="dna-line">
+            <div class="line"></div>
+            <i class="fa-solid fa-dna"></i>
+        </div>
+
+    </div>
+
+    <div class="about-right">
+
+        <p>
+            Our laboratory is dedicated to bridging the gap
+            between scientific theory and practical application.
+        </p>
+
+        <div class="rating-wrapper">
+
+            <div class="rating-box">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <h3>4.9/5 Rating</h3>
+
+                <span>From Our 14K Reviews</span>
+
+            </div>
+
+            <div class="review-users">
+
+                <img src="user.webp">
+                <img src="user2.webp">
+                <img src="user3.webp">
+                <img src="user4.webp">
+
+                <div class="count">
+                    1K+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .about-biotech{
+
+    background:
+    radial-gradient(circle at top right,
+    rgba(0,255,180,.12),
+    transparent 35%),
+    #021314;
+
+    min-height:100vh;
+
+    padding:120px 8%;
+
+    display:grid;
+
+    grid-template-columns:1.3fr 1fr;
+
+    gap:80px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+/* Glow */
+
+.about-biotech::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:600px;
+    height:600px;
+
+    background:#00ffd0;
+
+    filter:blur(250px);
+
+    opacity:.08;
+
+    top:-200px;
+    right:-200px;
+}
+
+/* TAG */
+
+.about-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:14px 24px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(0,255,180,.3);
+
+    background:rgba(0,255,180,.05);
+
+    color:#a9fff0;
+
+    margin-bottom:40px;
+}
+
+.about-tag span{
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:#00ffd0;
+}
+
+/* TITLE */
+
+.about-left h2{
+
+    color:white;
+
+    font-size:5rem;
+
+    line-height:1.05;
+
+    font-weight:700;
+}
+
+.about-left h2 span{
+
+    color:#48ffd8;
+}
+
+/* DNA LINE */
+
+.dna-line{
+
+    margin-top:70px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+}
+
+.line{
+
+    width:350px;
+    height:2px;
+
+    background:#48ffd8;
+
+    box-shadow:0 0 20px #48ffd8;
+}
+
+.dna-line i{
+
+    color:#48ffd8;
+
+    font-size:35px;
+}
+
+/* RIGHT */
+
+.about-right{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+}
+
+.about-right p{
+
+    color:#d1dede;
+
+    font-size:1.5rem;
+
+    line-height:1.8;
+
+    margin-bottom:60px;
+}
+
+/* RATING */
+
+.rating-wrapper{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:40px;
+}
+
+.rating-box{
+
+    padding:30px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.03);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.stars{
+
+    color:#48ffd8;
+
+    letter-spacing:4px;
+
+    margin-bottom:15px;
+}
+
+.rating-box h3{
+
+    color:white;
+
+    font-size:2rem;
+
+    margin-bottom:10px;
+}
+
+.rating-box span{
+
+    color:#a8b8b8;
+}
+
+/* USERS */
+
+.review-users{
+
+    display:flex;
+
+    align-items:center;
+
+    padding:15px;
+
+    border-radius:60px;
+
+    background:rgba(255,255,255,.03);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.review-users img{
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    margin-left:-12px;
+
+    border:3px solid #021314;
+}
+
+.review-users img:first-child{
+
+    margin-left:0;
+}
+
+.count{
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    background:#48ffd8;
+
+    color:#021314;
+
+    font-weight:700;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-left:-12px;
+}
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 991px){
+
+    .about-biotech{
+
+        grid-template-columns:1fr;
+
+        gap:60px;
+
+        padding:90px 6%;
+    }
+
+    .about-left h2{
+
+        font-size:3.5rem;
+    }
+
+    .about-right p{
+
+        font-size:1.2rem;
+    }
+
+    .rating-wrapper{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:25px;
+    }
+
+    .line{
+
+        width:250px;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px){
+
+    .about-biotech{
+
+        min-height:auto;
+
+        padding:80px 20px;
+    }
+
+    .about-tag{
+
+        padding:10px 18px;
+
+        font-size:14px;
+
+        margin-bottom:25px;
+    }
+
+    .about-left h2{
+
+        font-size:2.4rem;
+
+        line-height:1.15;
+    }
+
+    .dna-line{
+
+        margin-top:35px;
+
+        gap:15px;
+    }
+
+    .line{
+
+        width:140px;
+    }
+
+    .dna-line i{
+
+        font-size:24px;
+    }
+
+    .about-right p{
+
+        font-size:1rem;
+
+        line-height:1.8;
+
+        margin-bottom:35px;
+    }
+
+    .rating-wrapper{
+
+        width:100%;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:20px;
+    }
+
+    .rating-box{
+
+        width:100%;
+
+        padding:22px;
+    }
+
+    .rating-box h3{
+
+        font-size:1.5rem;
+    }
+
+    .review-users{
+
+        width:100%;
+
+        justify-content:center;
+
+        padding:18px;
+    }
+
+    .review-users img{
+
+        width:45px;
+        height:45px;
+
+        margin-left:-8px;
+    }
+
+    .count{
+
+        width:45px;
+        height:45px;
+
+        font-size:13px;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px){
+
+    .about-left h2{
+
+        font-size:2rem;
+    }
+
+    .about-right p{
+
+        font-size:15px;
+    }
+
+    .line{
+
+        width:100px;
+    }
+
+    .rating-box{
+
+        padding:18px;
+    }
+
+    .stars{
+
+        font-size:14px;
+    }
+
+    .rating-box h3{
+
+        font-size:1.3rem;
+    }
+
+    .review-users img{
+
+        width:40px;
+        height:40px;
+    }
+
+    .count{
+
+        width:40px;
+        height:40px;
+
+        font-size:12px;
+    }
+}
+</style>
+<section class="research-cards">
+
+    <div class="card video-card fade-up">
+
+        <img src="bio.webp" alt="">
+
+        <div class="overlay"></div>
+
+        <h3>How Does it Work?</h3>
+
+    </div>
+
+    <div class="card info-card fade-up delay-1">
+
+        <div class="top">
+            <h2>5K+</h2>
+            <h4>Industry Collaborations</h4>
+        </div>
+
+        <hr>
+
+        <ul>
+            <li>Industry & Academic Collaborations</li>
+        </ul>
+
+        <p>
+            Partnering with global institutions and private
+            sector leaders.
+        </p>
+
+        <a href="contact.html">Learn More ↗</a>
+
+    </div>
+
+    <div class="card image-card fade-up delay-2">
+
+        <img src="bio1.webp" alt="">
+
+        <div class="overlay"></div>
+
+        <div class="tags">
+            <span>Innovative Research</span>
+            <span>Scientific Excellence</span>
+            <span>Data-Driven Discovery</span>
+            <span>Trusted Expertise</span>
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .research-cards{
+    background:#031819;
+
+    padding:120px 8%;
+
+    display:grid;
+    grid-template-columns:1fr 1.4fr 1fr;
+
+    gap:35px;
+}
+
+.card{
+    border-radius:30px;
+    overflow:hidden;
+    position:relative;
+}
+
+/* LEFT CARD */
+
+.video-card{
+    min-height:470px;
+}
+
+.video-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+    transparent,
+    rgba(3,24,25,.85));
+}
+
+.play-btn{
+    position:absolute;
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    background:#c9ffe7;
+
+    color:#0b2330;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:35px;
+}
+
+.video-card h3{
+    position:absolute;
+    bottom:35px;
+    left:35px;
+
+    color:white;
+    font-size:2rem;
+}
+
+/* CENTER */
+
+.info-card{
+    background:#122d4c;
+
+    padding:50px;
+    color:white;
+}
+
+.top{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.top h2{
+    font-size:5rem;
+}
+
+.top h4{
+    font-size:2rem;
+}
+
+.info-card hr{
+    border:none;
+    height:1px;
+    background:rgba(255,255,255,.1);
+    margin:35px 0;
+}
+
+.info-card li{
+    margin-bottom:20px;
+    font-size:1.4rem;
+}
+
+.info-card p{
+    font-size:1.3rem;
+    line-height:1.8;
+    color:#d9d9d9;
+}
+
+.info-card a{
+    display:inline-block;
+    margin-top:30px;
+
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* RIGHT */
+
+.image-card{
+    min-height:470px;
+}
+
+.image-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.tags{
+    position:absolute;
+    bottom:25px;
+    left:25px;
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.tags span{
+    padding:12px 18px;
+
+    border-radius:30px;
+
+    backdrop-filter:blur(10px);
+
+    background:rgba(255,255,255,.15);
+
+    color:white;
+}
+
+/* FADE IN */
+
+.fade-up{
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s ease;
+}
+
+.fade-up.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.delay-1{
+    transition-delay:.2s;
+}
+
+.delay-2{
+    transition-delay:.4s;
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+    .research-cards{
+        grid-template-columns:1fr;
+    }
+
+    .top{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}
+</style>
+<script>
+    const cards = document.querySelectorAll('.fade-up');
+
+const observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+
+    });
+
+},{threshold:0.2});
+
+cards.forEach(card=>{
+    observer.observe(card);
+});
+</script>
+
+<section class="ticker-section">
+
+    <div class="ticker">
+
+        <div class="ticker-track">
+
+            <span>Biotech</span>
+            <span>✦</span>
+
+            <span>Environment</span>
+            <span>✦</span>
+
+            <span>Testing</span>
+            <span>✦</span>
+
+            <span>Research</span>
+            <span>✦</span>
+
+            <span>Diagnostics</span>
+            <span>✦</span>
+
+            <span>Innovation</span>
+            <span>✦</span>
+
+            <!-- Duplicate for seamless loop -->
+
+            <span>Biotech</span>
+            <span>✦</span>
+
+            <span>Environment</span>
+            <span>✦</span>
+
+            <span>Testing</span>
+            <span>✦</span>
+
+            <span>Research</span>
+            <span>✦</span>
+
+            <span>Diagnostics</span>
+            <span>✦</span>
+
+            <span>Innovation</span>
+            <span>✦</span>
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .ticker-section{
+    width:100%;
+    overflow:hidden;
+    background:#c8e8dc;
+    padding:25px 0;
+}
+
+.ticker{
+    width:100%;
+    overflow:hidden;
+}
+
+.ticker-track{
+
+    display:flex;
+    align-items:center;
+    gap:50px;
+
+    width:max-content;
+
+    animation:marquee 20s linear infinite;
+}
+
+.ticker-track span{
+
+    font-size:42px;
+    font-weight:700;
+    color:#15284b;
+
+    white-space:nowrap;
+}
+
+@keyframes marquee{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+
+}
+</style>
+<section class="research-section">
+
+    <div class="research-top">
+
+        <div class="research-left">
+
+            <div class="research-tag">
+                <span></span>
+                Key Research Fields
+            </div>
+
+            <h2 class="research-title">
+                <span>Leading</span>
+                <span>innovation</span>
+                <span>across</span>
+                <span>critical</span>
+                <span>fields</span>
+                <span>of</span>
+                <span>research</span>
+            </h2>
+
+        </div>
+
+        <div class="research-right">
+
+            <p class="research-description">
+                Each research field is supported by expert teams and
+                cutting-edge technologies, ensuring precision,
+                innovation, and real-world relevance. Our work is rooted
+                in curiosity, driven by data, and designed to deliver
+                meaningful impact.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="research-grid">
+
+        <div class="research-card">
+            <div class="icon-box">🧬</div>
+
+            <h3>Biomedical Research</h3>
+
+            <p>
+                Applying biological systems and organisms
+                to advance healthcare innovation.
+            </p>
+        </div>
+
+        <div class="research-card">
+            <div class="icon-box">⚗️</div>
+
+            <h3>Materials Science</h3>
+
+            <p>
+                Investigating the properties and
+                applications of advanced materials.
+            </p>
+        </div>
+
+        <div class="research-card">
+            <div class="icon-box">🧪</div>
+
+            <h3>Chemical Safety</h3>
+
+            <p>
+                Assessing the impact of substances
+                through rigorous scientific testing.
+            </p>
+        </div>
+
+        <div class="research-image-card">
+
+            <img src="bio.webp" alt="Research">
+
+            <div class="image-overlay"></div>
+
+            <div class="image-content">
+
+                <h3>Diagnostic Sciences</h3>
+
+                <p>
+                    Applying scientific methods for
+                    advanced laboratory investigations.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .research-section{
+
+    background:#031819;
+
+    padding:120px 7%;
+
+    overflow:hidden;
+}
+
+/* TOP */
+
+.research-top{
+
+    display:grid;
+
+    grid-template-columns:1.2fr 1fr;
+
+    gap:80px;
+
+    margin-bottom:80px;
+}
+
+/* TAG */
+
+.research-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px 24px;
+
+    border:1px solid rgba(0,255,208,.2);
+
+    border-radius:50px;
+
+    color:#b9fff3;
+
+    background:rgba(0,255,208,.05);
+
+    margin-bottom:35px;
+}
+
+.research-tag span{
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#00ffd0;
+}
+
+/* TITLE */
+
+.research-title{
+
+    font-size:5rem;
+
+    line-height:1.05;
+
+    color:white;
+
+    font-weight:700;
+}
+
+.research-title span{
+
+    display:inline-block;
+
+    opacity:0;
+
+    transform:translateY(50px);
+
+    animation:wordReveal .8s forwards;
+}
+
+.research-title span:nth-child(1){animation-delay:.1s;}
+.research-title span:nth-child(2){animation-delay:.2s;}
+.research-title span:nth-child(3){animation-delay:.3s;}
+.research-title span:nth-child(4){animation-delay:.4s;}
+.research-title span:nth-child(5){animation-delay:.5s;}
+.research-title span:nth-child(6){animation-delay:.6s;}
+.research-title span:nth-child(7){animation-delay:.7s;}
+
+/* DESCRIPTION */
+
+.research-description{
+
+    color:#a9c2c2;
+
+    font-size:1.25rem;
+
+    line-height:1.9;
+
+    opacity:0;
+
+    animation:fadeUp 1s forwards;
+    animation-delay:1s;
+}
+
+/* GRID */
+
+.research-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+}
+
+/* CARDS */
+
+.research-card{
+
+    background:#0c2628;
+
+    border:1px solid rgba(0,255,208,.08);
+
+    border-radius:30px;
+
+    padding:40px;
+
+    min-height:380px;
+
+    transition:.4s;
+
+    opacity:0;
+
+    animation:fadeUp .8s forwards;
+}
+
+.research-card:nth-child(1){
+    animation-delay:1.2s;
+}
+
+.research-card:nth-child(2){
+    animation-delay:1.4s;
+}
+
+.research-card:nth-child(3){
+    animation-delay:1.6s;
+}
+
+.research-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#00ffd0;
+
+    box-shadow:
+    0 20px 40px rgba(0,255,208,.15);
+}
+
+/* ICON */
+
+.icon-box{
+
+    width:75px;
+    height:75px;
+
+    border-radius:50%;
+
+    background:#123537;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:32px;
+
+    margin-bottom:120px;
+}
+
+/* TEXT */
+
+.research-card h3{
+
+    color:white;
+
+    font-size:1.8rem;
+
+    margin-bottom:20px;
+}
+
+.research-card p{
+
+    color:#9cb7b7;
+
+    line-height:1.8;
+}
+
+/* IMAGE CARD */
+
+.research-image-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:30px;
+
+    min-height:380px;
+
+    opacity:0;
+
+    animation:imageReveal 1s forwards;
+    animation-delay:1.8s;
+}
+
+.research-image-card img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.image-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+    transparent,
+    rgba(0,0,0,.8));
+}
+
+.image-content{
+
+    position:absolute;
+
+    bottom:30px;
+    left:30px;
+    right:30px;
+}
+
+.image-content h3{
+
+    color:white;
+
+    font-size:2rem;
+
+    margin-bottom:15px;
+}
+
+.image-content p{
+
+    color:#d7e3e3;
+
+    line-height:1.8;
+}
+
+/* ANIMATION */
+
+@keyframes wordReveal{
+
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(60px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes imageReveal{
+
+    from{
+        opacity:0;
+        transform:scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1200px){
+
+    .research-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:991px){
+
+    .research-top{
+        grid-template-columns:1fr;
+    }
+
+    .research-title{
+        font-size:3.5rem;
+    }
+}
+
+@media(max-width:768px){
+
+    .research-grid{
+        grid-template-columns:1fr;
+    }
+
+    .research-title{
+        font-size:2.5rem;
+    }
+
+    .research-description{
+        font-size:1rem;
+    }
+}
+</style>
+
+<section class="biox-services-section">
+
+    <div class="biox-container">
+
+        <!-- LEFT SIDE -->
+
+        <div class="biox-left-content">
+
+            <div class="biox-tag">
+                <span></span>
+                What We Do
+            </div>
+
+            <h2 class="biox-heading">
+                Transforming scientific
+                questions into real-world
+                results
+            </h2>
+
+            <p class="biox-description">
+                At our core, we are dedicated to advancing scientific
+                understanding through purposeful research tailored to
+                address today's most pressing challenges.
+            </p>
+
+            <a href="contact.html" class="biox-btn">
+                Contact Us
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+            <div class="biox-stat-box">
+
+                <div class="biox-counter-wrap">
+                    <span id="bioxCounter">0</span>%
+                </div>
+
+                <div class="biox-line"></div>
+
+                <h3>Environmental Science</h3>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+        <div class="biox-right-content">
+
+            <div class="biox-service-item">
+
+                <div class="biox-icon">
+                    🧪
+                </div>
+
+                <div>
+
+                    <h3>Comprehensive Laboratory Testing</h3>
+
+                    <p>
+                        We offer advanced testing services across a wide
+                        range of scientific disciplines, delivering
+                        accurate validated results.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="biox-service-item">
+
+                <div class="biox-icon">
+                    🎯
+                </div>
+
+                <div>
+
+                    <h3>Research Design & Methodology</h3>
+
+                    <p>
+                        From hypothesis to execution, we craft tailored
+                        research strategies aligned with scientific
+                        best practices.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="biox-service-item">
+
+                <div class="biox-icon">
+                    📊
+                </div>
+
+                <div>
+
+                    <h3>Data Analysis & Interpretation</h3>
+
+                    <p>
+                        Translating complex datasets into clear,
+                        actionable insights backed by clarity.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="biox-service-item">
+
+                <div class="biox-icon">
+                    🔬
+                </div>
+
+                <div>
+
+                    <h3>Collaborative Scientific Partnerships</h3>
+
+                    <p>
+                        We work closely with academic institutions,
+                        industries and government agencies.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .biox-services-section{
+    background:#031819;
+    padding:120px 7%;
+    overflow:hidden;
+}
+
+.biox-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:90px;
+    align-items:start;
+}
+
+/* LEFT */
+
+.biox-tag,
+.biox-heading,
+.biox-description,
+.biox-btn,
+.biox-counter-wrap,
+.biox-stat-box h3,
+.biox-stat-box p{
+    opacity:0;
+    transform:translateX(-100px);
+}
+
+.biox-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 22px;
+    border:1px solid rgba(0,255,200,.2);
+    border-radius:50px;
+    color:#bffff0;
+    background:rgba(0,255,200,.05);
+    transition:1s;
+}
+
+.biox-tag span{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#00ffd0;
+}
+
+.biox-heading{
+    margin-top:30px;
+    color:white;
+    font-size:5rem;
+    line-height:1.05;
+    transition:1s;
+}
+
+.biox-description{
+    margin-top:25px;
+    color:#bdd0d0;
+    line-height:1.9;
+    font-size:1.1rem;
+    transition:1s;
+}
+
+.biox-btn{
+    display:inline-flex;
+    margin-top:40px;
+    padding:18px 35px;
+    background:#c8ffe5;
+    color:#032425;
+    text-decoration:none;
+    border-radius:15px;
+    font-weight:700;
+    transition:1s;
+}
+
+.biox-stat-box{
+    margin-top:80px;
+}
+
+.biox-counter-wrap{
+    font-size:8rem;
+    font-weight:800;
+    color:transparent;
+    -webkit-text-stroke:2px #c8ffe5;
+    transition:1s;
+}
+
+.biox-line{
+    width:100%;
+    max-width:400px;
+    height:1px;
+    background:rgba(255,255,255,.1);
+    margin:25px 0;
+}
+
+.biox-stat-box h3{
+    color:white;
+    font-size:2rem;
+    margin-bottom:15px;
+    transition:1s;
+}
+
+.biox-stat-box p{
+    color:#bdd0d0;
+    line-height:1.8;
+    transition:1s;
+}
+
+/* RIGHT */
+
+.biox-service-item{
+    display:flex;
+    gap:25px;
+    padding:40px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    opacity:0;
+    transform:translateX(120px);
+
+    transition:1s;
+}
+
+.biox-icon{
+    width:65px;
+    height:65px;
+    min-width:65px;
+
+    border-radius:50%;
+
+    background:#c8ffe5;
+    color:#031819;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+}
+
+.biox-service-item h3{
+    color:white;
+    font-size:1.7rem;
+    margin-bottom:15px;
+}
+
+.biox-service-item p{
+    color:#bdd0d0;
+    line-height:1.8;
+}
+
+/* ACTIVE CLASSES */
+
+.biox-left-show{
+    opacity:1 !important;
+    transform:translateX(0) !important;
+}
+
+.biox-right-show{
+    opacity:1 !important;
+    transform:translateX(0) !important;
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+    .biox-container{
+        grid-template-columns:1fr;
+    }
+
+    .biox-heading{
+        font-size:3.5rem;
+    }
+
+    .biox-counter-wrap{
+        font-size:5rem;
+    }
+}
+
+@media(max-width:768px){
+
+    .biox-heading{
+        font-size:2.5rem;
+    }
+
+    .biox-service-item{
+        flex-direction:column;
+    }
+}
+</style>
+<script>
+    const bioxSection =
+document.querySelector(".biox-services-section");
+
+const bioxLeftItems = [
+
+document.querySelector(".biox-tag"),
+document.querySelector(".biox-heading"),
+document.querySelector(".biox-description"),
+document.querySelector(".biox-btn"),
+document.querySelector(".biox-counter-wrap"),
+document.querySelector(".biox-stat-box h3"),
+document.querySelector(".biox-stat-box p")
+
+];
+
+const bioxServices =
+document.querySelectorAll(".biox-service-item");
+
+let bioxCounterStarted = false;
+
+const bioxObserver =
+new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+/* LEFT ANIMATION */
+
+bioxLeftItems.forEach((item,index)=>{
+
+setTimeout(()=>{
+
+item.classList.add("biox-left-show");
+
+},index * 180);
+
+});
+
+/* RIGHT ANIMATION */
+
+bioxServices.forEach((item,index)=>{
+
+setTimeout(()=>{
+
+item.classList.add("biox-right-show");
+
+},900 + (index * 200));
+
+});
+
+/* COUNTER */
+
+if(!bioxCounterStarted){
+
+bioxCounterStarted = true;
+
+let count = 0;
+
+const target = 98;
+
+const counter =
+document.getElementById("bioxCounter");
+
+const timer =
+setInterval(()=>{
+
+count++;
+
+counter.textContent = count;
+
+if(count >= target){
+
+clearInterval(timer);
+
+}
+
+},20);
+
+}
+
+}
+
+});
+
+},{
+threshold:0.3
+});
+
+bioxObserver.observe(bioxSection);
+</script>
+
+<section class="ticker-section">
+
+    <div class="ticker">
+
+        <div class="ticker-track">
+
+            <span>Biotech</span>
+            <span>✦</span>
+
+            <span>Environment</span>
+            <span>✦</span>
+
+            <span>Testing</span>
+            <span>✦</span>
+
+            <span>Research</span>
+            <span>✦</span>
+
+            <span>Diagnostics</span>
+            <span>✦</span>
+
+            <span>Innovation</span>
+            <span>✦</span>
+
+            <!-- Duplicate for seamless loop -->
+
+            <span>Biotech</span>
+            <span>✦</span>
+
+            <span>Environment</span>
+            <span>✦</span>
+
+            <span>Testing</span>
+            <span>✦</span>
+
+            <span>Research</span>
+            <span>✦</span>
+
+            <span>Diagnostics</span>
+            <span>✦</span>
+
+            <span>Innovation</span>
+            <span>✦</span>
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .ticker-section{
+    width:100%;
+    overflow:hidden;
+    background:#c8e8dc;
+    padding:25px 0;
+}
+
+.ticker{
+    width:100%;
+    overflow:hidden;
+}
+
+.ticker-track{
+
+    display:flex;
+    align-items:center;
+    gap:50px;
+
+    width:max-content;
+
+    animation:marquee 20s linear infinite;
+}
+
+.ticker-track span{
+
+    font-size:42px;
+    font-weight:700;
+    color:#15284b;
+
+    white-space:nowrap;
+}
+
+@keyframes marquee{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+
+}
+</style>
+<section class="biocase-section">
+
+    <div class="biocase-top">
+
+        <div class="biocase-left">
+
+            <div class="biocase-tag">
+                <span></span>
+                Our Case Studies
+            </div>
+
+            <h2 class="biocase-heading">
+                Innovative solution backed by scientific rigor
+            </h2>
+
+        </div>
+
+        <div class="biocase-right">
+
+            <a href="404.html" class="biocase-btn">
+                Explore All Studies ↗
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="biocase-grid">
+
+        <div class="biocase-card">
+
+            <div class="biocase-image">
+                <img src="bio1.webp" alt="">
+            </div>
+
+            <h3>
+                Genomic Research Unlocks Drought-Resistant Crop Varieties
+            </h3>
+
+        </div>
+
+        <div class="biocase-card">
+
+            <div class="biocase-image">
+                <img src="bio3.webp" alt="">
+            </div>
+
+            <h3>
+                Detecting Water Contaminants Using Advanced Spectroscopy
+            </h3>
+
+        </div>
+
+        <div class="biocase-card">
+
+            <div class="biocase-image">
+                <img src="bio4.webp" alt="">
+            </div>
+
+            <h3>
+                Accelerating Vaccine Development with Rapid Antigen Testing
+            </h3>
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .biocase-section{
+
+    background:#031819;
+
+    padding:120px 7%;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.biocase-section::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    background:#00ffd0;
+
+    border-radius:50%;
+
+    filter:blur(250px);
+
+    opacity:.06;
+
+    top:-200px;
+    right:-200px;
+}
+
+/* TOP */
+
+.biocase-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:50px;
+
+    margin-bottom:80px;
+}
+
+.biocase-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px 24px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(0,255,208,.15);
+
+    color:#d7fff8;
+
+    background:rgba(0,255,208,.05);
+
+    margin-bottom:35px;
+}
+
+.biocase-tag span{
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#00ffd0;
+}
+
+.biocase-heading{
+
+    font-size:5rem;
+
+    line-height:1.05;
+
+    color:white;
+
+    max-width:850px;
+
+    opacity:0;
+
+    transform:translateX(150px);
+
+    transition:1.2s ease;
+}
+
+.biocase-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:18px 35px;
+
+    border-radius:15px;
+
+    text-decoration:none;
+
+    background:#c8ffe5;
+
+    color:#031819;
+
+    font-weight:700;
+
+    opacity:0;
+
+    transform:translateX(100px);
+
+    transition:1s ease;
+}
+
+/* GRID */
+
+.biocase-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:35px;
+}
+
+.biocase-card{
+
+    opacity:0;
+
+    transform:translateY(80px);
+
+    transition:1s ease;
+}
+
+.biocase-image{
+
+    overflow:hidden;
+
+    border-radius:30px;
+
+    height:380px;
+}
+
+.biocase-image img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+}
+
+.biocase-card:hover img{
+
+    transform:scale(1.08);
+}
+
+.biocase-card h3{
+
+    color:white;
+
+    font-size:2rem;
+
+    line-height:1.3;
+
+    margin-top:25px;
+}
+
+/* ACTIVE */
+
+.biocase-show-heading{
+
+    opacity:1 !important;
+
+    transform:translateX(0) !important;
+}
+
+.biocase-show-card{
+
+    opacity:1 !important;
+
+    transform:translateY(0) !important;
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+    .biocase-top{
+
+        flex-direction:column;
+    }
+
+    .biocase-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .biocase-heading{
+
+        font-size:3.5rem;
+    }
+}
+
+@media(max-width:768px){
+
+    .biocase-heading{
+
+        font-size:2.5rem;
+    }
+
+    .biocase-image{
+
+        height:280px;
+    }
+
+    .biocase-card h3{
+
+        font-size:1.5rem;
+    }
+}
+</style>
+<script>
+    const biocaseSection =
+document.querySelector(".biocase-section");
+
+const biocaseHeading =
+document.querySelector(".biocase-heading");
+
+const biocaseBtn =
+document.querySelector(".biocase-btn");
+
+const biocaseCards =
+document.querySelectorAll(".biocase-card");
+
+const biocaseObserver =
+new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+biocaseHeading.classList.add(
+"biocase-show-heading"
+);
+
+setTimeout(()=>{
+
+biocaseBtn.classList.add(
+"biocase-show-heading"
+);
+
+},300);
+
+biocaseCards.forEach((card,index)=>{
+
+setTimeout(()=>{
+
+card.classList.add(
+"biocase-show-card"
+);
+
+},600 + (index * 250));
+
+});
+
+}
+
+});
+
+},{
+threshold:0.25
+});
+
+biocaseObserver.observe(
+biocaseSection
+);
+</script>
+
+<section class="bioflow-section">
+
+    <div class="bioflow-image-side">
+
+        <div class="bioflow-image-box">
+
+            <img src="bio5.webp" alt="Laboratory">
+
+            <div class="bioflow-play-btn">
+                ▶
+            </div>
+
+            <div class="bioflow-client-card">
+
+                <div class="bioflow-avatars">
+
+                    <img src="1user.webp">
+                    <img src="user2.webp">
+                    <img src="user3.webp">
+                    <img src="user4.webp">
+
+                </div>
+
+                <h3>5K+ Satisfied Clients</h3>
+
+                <p>
+                    Trusted by organizations,
+                    institutions, and researchers
+                    worldwide.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bioflow-content-side">
+
+        <div class="bioflow-tag">
+            <span></span>
+            How It Work
+        </div>
+
+        <h2 class="bioflow-title">
+            From sample to solution –
+            a trusted scientific process
+        </h2>
+
+        <p class="bioflow-description">
+            Our process is built on clarity, accuracy,
+            and scientific rigor. From the moment a sample
+            arrives at our lab, it goes through a carefully
+            managed workflow.
+        </p>
+
+        <div class="bioflow-step">
+
+            <div class="bioflow-step-number">
+                talk to us
+            </div>
+
+            <div class="bioflow-step-content">
+
+                <h3>Initial Consultation</h3>
+
+                <p>
+                    Define your research goals,
+                    timeline, and scientific requirements.
+                </p>
+
+            </div>
+
+        </div>
+
+        </div>
+
+        <div class="bioflow-step">
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .bioflow-section{
+
+    background:#031819;
+
+    padding:120px 7%;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:60px;
+
+    overflow:hidden;
+}
+
+/* IMAGE SIDE */
+
+.bioflow-image-side{
+
+    opacity:0;
+
+    transform:scale(.9);
+
+    transition:1.2s ease;
+}
+
+.bioflow-image-box{
+
+    position:relative;
+
+    border-radius:30px;
+
+    overflow:hidden;
+}
+
+.bioflow-image-box img{
+
+    width:100%;
+
+    height:850px;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.bioflow-play-btn{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    background:rgba(0,0,0,.6);
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+}
+
+.bioflow-client-card{
+
+    position:absolute;
+
+    left:35px;
+    bottom:35px;
+
+    width:320px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    padding:25px;
+
+    border-radius:25px;
+}
+
+.bioflow-avatars{
+
+    display:flex;
+    margin-bottom:20px;
+}
+
+.bioflow-avatars img{
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    margin-left:-10px;
+
+    border:3px solid #031819;
+}
+
+.bioflow-avatars img:first-child{
+    margin-left:0;
+}
+
+.bioflow-client-card h3{
+
+    color:white;
+
+    margin-bottom:12px;
+}
+
+.bioflow-client-card p{
+
+    color:#d0dada;
+
+    line-height:1.8;
+}
+
+/* CONTENT */
+
+.bioflow-tag,
+.bioflow-title,
+.bioflow-description{
+
+    opacity:0;
+
+    transform:translateX(120px);
+
+    transition:1s ease;
+}
+
+.bioflow-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(0,255,200,.2);
+
+    color:#d8fff6;
+
+    margin-bottom:30px;
+}
+
+.bioflow-tag span{
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#00ffd0;
+}
+
+.bioflow-title{
+
+    color:white;
+
+    font-size:4.5rem;
+
+    line-height:1.1;
+
+    margin-bottom:30px;
+}
+
+.bioflow-description{
+
+    color:#bfd1d1;
+
+    line-height:1.9;
+
+    font-size:1.1rem;
+
+    margin-bottom:50px;
+}
+
+/* STEPS */
+
+.bioflow-step{
+
+    display:flex;
+
+    gap:25px;
+
+    padding:35px 0;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    opacity:0;
+
+    transform:translateX(120px);
+
+    transition:1s ease;
+}
+
+.bioflow-step-number{
+
+    background:#bfffe8;
+
+    color:#031819;
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    height:max-content;
+}
+
+.bioflow-step-content h3{
+
+    color:white;
+
+    margin-bottom:12px;
+
+    font-size:1.7rem;
+}
+
+.bioflow-step-content p{
+
+    color:#bfd1d1;
+
+    line-height:1.8;
+}
+
+/* ACTIVE */
+
+.bioflow-show-image{
+
+    opacity:1 !important;
+
+    transform:scale(1) !important;
+}
+
+.bioflow-show-right{
+
+    opacity:1 !important;
+
+    transform:translateX(0) !important;
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+    .bioflow-section{
+
+        grid-template-columns:1fr;
+    }
+
+    .bioflow-title{
+
+        font-size:3rem;
+    }
+
+    .bioflow-image-box img{
+
+        height:500px;
+    }
+}
+
+@media(max-width:768px){
+
+    .bioflow-title{
+
+        font-size:2.3rem;
+    }
+
+    .bioflow-step{
+
+        flex-direction:column;
+    }
+
+    .bioflow-client-card{
+
+        width:90%;
+        left:5%;
+    }
+}
+</style>
+<script>
+    const bioflowSection =
+document.querySelector(".bioflow-section");
+
+const bioflowImage =
+document.querySelector(".bioflow-image-side");
+
+const bioflowRightItems = [
+
+document.querySelector(".bioflow-tag"),
+document.querySelector(".bioflow-title"),
+document.querySelector(".bioflow-description")
+
+];
+
+const bioflowSteps =
+document.querySelectorAll(".bioflow-step");
+
+const bioflowObserver =
+new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+bioflowImage.classList.add(
+"bioflow-show-image"
+);
+
+bioflowRightItems.forEach((item,index)=>{
+
+setTimeout(()=>{
+
+item.classList.add(
+"bioflow-show-right"
+);
+
+},index * 250);
+
+});
+
+bioflowSteps.forEach((step,index)=>{
+
+setTimeout(()=>{
+
+step.classList.add(
+"bioflow-show-right"
+);
+
+},800 + (index * 250));
+
+});
+
+}
+
+});
+
+},{
+threshold:0.25
+});
+
+bioflowObserver.observe(
+bioflowSection
+);
+</script>
+
+<section class="ticker-section">
+
+    <div class="ticker">
+
+        <div class="ticker-track">
+
+            <span>Biotech</span>
+            <span>✦</span>
+
+            <span>Environment</span>
+            <span>✦</span>
+
+            <span>Testing</span>
+            <span>✦</span>
+
+            <span>Research</span>
+            <span>✦</span>
+
+            <span>Diagnostics</span>
+            <span>✦</span>
+
+            <span>Innovation</span>
+            <span>✦</span>
+
+            <!-- Duplicate for seamless loop -->
+
+            <span>Biotech</span>
+            <span>✦</span>
+
+            <span>Environment</span>
+            <span>✦</span>
+
+            <span>Testing</span>
+            <span>✦</span>
+
+            <span>Research</span>
+            <span>✦</span>
+
+            <span>Diagnostics</span>
+            <span>✦</span>
+
+            <span>Innovation</span>
+            <span>✦</span>
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .ticker-section{
+    width:100%;
+    overflow:hidden;
+    background:#c8e8dc;
+    padding:25px 0;
+}
+
+.ticker{
+    width:100%;
+    overflow:hidden;
+}
+
+.ticker-track{
+
+    display:flex;
+    align-items:center;
+    gap:50px;
+
+    width:max-content;
+
+    animation:marquee 20s linear infinite;
+}
+
+.ticker-track span{
+
+    font-size:42px;
+    font-weight:700;
+    color:#15284b;
+
+    white-space:nowrap;
+}
+
+@keyframes marquee{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+
+}
+</style>
+
+<section class="biofaq-section">
+
+    <!-- SVG BACKGROUND -->
+
+    <div class="biofaq-svg-bg">
+
+        <svg class="biofaq-dna-svg" viewBox="0 0 500 200">
+
+            <path d="M0 100 C100 0 200 200 300 100 S500 0 500 100"
+                fill="none"
+                stroke="#00ffd0"
+                stroke-width="4"/>
+
+            <path d="M0 120 C100 220 200 20 300 120 S500 220 500 120"
+                fill="none"
+                stroke="#00ffd0"
+                stroke-width="4"/>
+
+        </svg>
+
+    </div>
+
+    <div class="biofaq-container">
+
+        <!-- LEFT -->
+
+        <div class="biofaq-left">
+
+            <div class="biofaq-tag">
+                <span></span>
+                Frequently Asked Questions
+            </div>
+
+            <h2 class="biofaq-title">
+                Browse our most
+                asked questions
+            </h2>
+
+            <p class="biofaq-desc">
+                We've compiled answers to the most common
+                questions about our laboratory services,
+                research process and scientific capabilities.
+            </p>
+
+            <a href="404.html" class="biofaq-btn">
+                View All FAQs ↗
+            </a>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="biofaq-box">
+
+            <div class="biofaq-item">
+
+                <div class="biofaq-question">
+
+                    What types of research services do you offer?
+
+                    <span>+</span>
+
+                </div>
+
+                <div class="biofaq-answer">
+
+                    We provide biotechnology, environmental
+                    science, genomic analysis and laboratory
+                    testing services.
+
+                </div>
+
+            </div>
+
+            <div class="biofaq-item">
+
+                <div class="biofaq-question">
+
+                    Can I request a custom research project?
+
+                    <span>+</span>
+
+                </div>
+
+                <div class="biofaq-answer">
+
+                    Yes, we create customized scientific
+                    research solutions tailored to your needs.
+
+                </div>
+
+            </div>
+
+            <div class="biofaq-item">
+
+                <div class="biofaq-question">
+
+                    How long does a typical project take?
+
+                    <span>+</span>
+
+                </div>
+
+                <div class="biofaq-answer">
+
+                    Timelines vary depending on project
+                    complexity and laboratory requirements.
+
+                </div>
+
+            </div>
+
+            <div class="biofaq-item">
+
+                <div class="biofaq-question">
+
+                    Are your labs certified?
+
+                    <span>+</span>
+
+                </div>
+
+                <div class="biofaq-answer">
+
+                    Yes, our laboratories follow industry
+                    standards and quality assurance protocols.
+
+                </div>
+
+            </div>
+
+            <div class="biofaq-item">
+
+                <div class="biofaq-question">
+
+                    How do I submit a sample?
+
+                    <span>+</span>
+
+                </div>
+
+                <div class="biofaq-answer">
+
+                    Contact our team and we will guide you
+                    through the submission process.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<style>
+    .biofaq-section{
+
+    background:#031819;
+
+    padding:120px 7%;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.biofaq-container{
+
+    display:grid;
+
+    grid-template-columns:1fr 1.3fr;
+
+    gap:80px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+/* SVG */
+
+.biofaq-svg-bg{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+}
+
+.biofaq-dna-svg{
+
+    position:absolute;
+
+    right:-150px;
+
+    top:50%;
+
+    width:700px;
+
+    opacity:.08;
+
+    animation:biofaqFloat 8s ease-in-out infinite;
+}
+
+@keyframes biofaqFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-30px);
+    }
+}
+
+/* LEFT */
+
+.biofaq-tag,
+.biofaq-title,
+.biofaq-desc,
+.biofaq-btn{
+
+    opacity:0;
+
+    transform:translateX(-100px);
+
+    transition:1s ease;
+}
+
+.biofaq-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    border-radius:50px;
+
+    border:1px solid rgba(0,255,200,.15);
+
+    color:#d8fff6;
+}
+
+.biofaq-tag span{
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#00ffd0;
+}
+
+.biofaq-title{
+
+    color:white;
+
+    font-size:4.5rem;
+
+    line-height:1.05;
+
+    margin:30px 0;
+}
+
+.biofaq-desc{
+
+    color:#b9d0d0;
+
+    line-height:1.8;
+
+    font-size:1.1rem;
+}
+
+.biofaq-btn{
+
+    display:inline-block;
+
+    margin-top:40px;
+
+    padding:18px 35px;
+
+    background:#c8ffe5;
+
+    color:#031819;
+
+    text-decoration:none;
+
+    border-radius:15px;
+
+    font-weight:700;
+}
+
+/* RIGHT */
+
+.biofaq-box{
+
+    background:#103336;
+
+    border-radius:30px;
+
+    padding:40px;
+
+    opacity:0;
+
+    transform:translateX(100px);
+
+    transition:1.2s ease;
+}
+
+.biofaq-item{
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    padding:25px 0;
+
+    cursor:pointer;
+}
+
+.biofaq-question{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    color:white;
+
+    font-size:1.2rem;
+
+    font-weight:600;
+}
+
+.biofaq-answer{
+
+    max-height:0;
+
+    overflow:hidden;
+
+    color:#b9d0d0;
+
+    line-height:1.8;
+
+    transition:.5s ease;
+}
+
+.biofaq-item.active .biofaq-answer{
+
+    max-height:200px;
+
+    margin-top:15px;
+}
+
+/* SHOW */
+
+.biofaq-show-left{
+
+    opacity:1 !important;
+
+    transform:translateX(0) !important;
+}
+
+.biofaq-show-right{
+
+    opacity:1 !important;
+
+    transform:translateX(0) !important;
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+    .biofaq-container{
+
+        grid-template-columns:1fr;
+    }
+
+    .biofaq-title{
+
+        font-size:3rem;
+    }
+}
+
+@media(max-width:768px){
+
+    .biofaq-title{
+
+        font-size:2.3rem;
+    }
+
+    .biofaq-box{
+
+        padding:25px;
+    }
+}
+</style>
+<script>
+    const biofaqSection =
+document.querySelector(".biofaq-section");
+
+const biofaqLeft = [
+
+document.querySelector(".biofaq-tag"),
+document.querySelector(".biofaq-title"),
+document.querySelector(".biofaq-desc"),
+document.querySelector(".biofaq-btn")
+
+];
+
+const biofaqBox =
+document.querySelector(".biofaq-box");
+
+const biofaqObserver =
+new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+biofaqLeft.forEach((el,index)=>{
+
+setTimeout(()=>{
+
+el.classList.add(
+"biofaq-show-left"
+);
+
+},index*200);
+
+});
+
+setTimeout(()=>{
+
+biofaqBox.classList.add(
+"biofaq-show-right"
+);
+
+},500);
+
+}
+
+});
+
+},{
+threshold:.3
+});
+
+biofaqObserver.observe(
+biofaqSection
+);
+
+/* Accordion */
+
+document
+.querySelectorAll(".biofaq-item")
+.forEach(item=>{
+
+item.addEventListener("click",()=>{
+
+item.classList.toggle("active");
+
+});
+
+});
+</script>
+
+<footer class="biotech-footer">
+
+    <div class="biotech-footer-glow"></div>
+
+    <div class="biotech-footer-container">
+
+        <!-- LEFT -->
+
+        <div class="biotech-footer-about">
+
+            <img src="logo.webp" alt="Logo" class="biotech-footer-logo">
+
+            <p>
+                Advancing scientific discovery through innovative
+                biotechnology, laboratory research, genomic analysis,
+                and data-driven solutions that create meaningful impact.
+            </p>
+
+            <div class="biotech-socials">
+
+                <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+
+                <a href="404.html"><i class="fab fa-instagram"></i></a>
+
+                <a href="404.html"><i class="fab fa-linkedin-in"></i></a>
+
+                <a href="404.html"><i class="fab fa-youtube"></i></a>
+
+            </div>
+
+        </div>
+
+        <!-- LINKS -->
+
+        <div class="biotech-footer-links">
+
+            <h3>Research Areas</h3>
+
+            <a href="404.html">Genomics</a>
+            <a href="404.html">Biomedical Science</a>
+            <a href="404.html">Environmental Studies</a>
+            <a href="404.html">Chemical Analysis</a>
+            <a href="404.html">Laboratory Testing</a>
+
+        </div>
+
+        <!-- SERVICES -->
+
+        <div class="biotech-footer-links">
+
+            <h3>Quick Links</h3>
+
+            <a href="contact.html">Home</a>
+            <a href="contact.html">About</a>
+            <a href="contact.html">Research</a>
+            <a href="contact.html">Case Studies</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <!-- CONTACT -->
+
+        <div class="biotech-footer-contact">
+
+            <h3>Contact Us</h3>
+
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                +91 89397 484533
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                info@biotechlab.com
+            </p>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Chennai, Tamil Nadu
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="biotech-footer-bottom">
+
+        <p>
+            © 2026 BioTech Research Laboratory.
+            All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+<style>
+    .biotech-footer{
+
+    position:relative;
+
+    background:#021213;
+
+    overflow:hidden;
+
+    border-top:1px solid rgba(0,255,208,.1);
+}
+
+.biotech-footer-glow{
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    background:#00ffd0;
+
+    filter:blur(250px);
+
+    opacity:.05;
+
+    top:-200px;
+    left:-200px;
+}
+
+.biotech-footer-container{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:100px 7% 70px;
+
+    display:grid;
+
+    grid-template-columns:
+    1.4fr 1fr 1fr 1fr;
+
+    gap:70px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.biotech-footer-logo{
+
+    width:220px;
+
+    margin-bottom:25px;
+}
+
+.biotech-footer-about p{
+
+    color:#a9c6c6;
+
+    line-height:2;
+
+    font-size:16px;
+
+    margin-bottom:30px;
+}
+
+.biotech-socials{
+
+    display:flex;
+
+    gap:15px;
+}
+
+.biotech-socials a{
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-decoration:none;
+
+    color:#c8ffe5;
+
+    background:rgba(255,255,255,.04);
+
+    transition:.4s;
+}
+
+.biotech-socials a:hover{
+
+    background:#00ffd0;
+
+    color:#031819;
+
+    transform:translateY(-5px);
+}
+
+.biotech-footer-links h3,
+.biotech-footer-contact h3{
+
+    color:white;
+
+    margin-bottom:30px;
+
+    font-size:24px;
+}
+
+.biotech-footer-links{
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.biotech-footer-links a{
+
+    color:#a9c6c6;
+
+    text-decoration:none;
+
+    margin-bottom:18px;
+
+    transition:.3s;
+}
+
+.biotech-footer-links a:hover{
+
+    color:#00ffd0;
+
+    padding-left:8px;
+}
+
+.biotech-footer-contact p{
+
+    color:#a9c6c6;
+
+    margin-bottom:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    line-height:1.8;
+}
+
+.biotech-footer-contact i{
+
+    color:#00ffd0;
+
+    font-size:18px;
+}
+
+.biotech-footer-bottom{
+
+    border-top:1px solid rgba(255,255,255,.05);
+
+    text-align:center;
+
+    padding:30px;
+}
+
+.biotech-footer-bottom p{
+
+    color:#89a5a5;
+}
+
+/* Responsive */
+
+@media(max-width:991px){
+
+    .biotech-footer-container{
+
+        grid-template-columns:1fr 1fr;
+
+        gap:50px;
+    }
+}
+
+@media(max-width:768px){
+
+    .biotech-footer-container{
+
+        grid-template-columns:1fr;
+    }
+
+    .biotech-footer-logo{
+
+        width:180px;
+    }
+}
+</style>
